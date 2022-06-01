@@ -19,7 +19,7 @@ public class Car {
 
     private String name;
 
-    private int carPrice; // 가격 string ? long
+    private int carPrice; // 가격
 
     private int registrationFee;
 
@@ -33,43 +33,43 @@ public class Car {
 
     private String mileage;
 
-    private String color;
+    private String color; // enum?
 
-    private String fuel;
+    private String fuel; // enum?
 
-    private String importStatus;
+    private String importStatus; // enum?
 
-    private String manufacturer;
+    private String manufacturer; // enum?
 
-    private String model;
+    private String model; // enum?
 
-    private String detailModel;
+    private String detailModel; // enum?
 
-    private String transmission;
+    private String transmission; // enum?
 
-    private String accident;
+    private String accident; // enum?
 
-    private String options;
+    private String options; // enum?
 
-    private String image; //img
+    private String image; //img -> 수정요함
 
-    private String subImage; //img
+    private String subImage; //img -> 수정요함
 
     private int sheetMetal;
 
-    private int exchange; //예약어
+    private int exchange;  // enum?
 
-    private int useChange;
+    private String useChange; // enum? 있음 없음
 
-    private int detailedCondition;
+    private int detailedCondition; // enum?
 
     private int damageMyCar;
 
     private int relativeDamage;
 
-    private int useChangeHistory;
+    private int useChangeHistory; // 있음 없음 enum?
 
-    private int specialAccidentHistory;
+    private int specialAccidentHistory; //enum? 있음 없음
 
     private LocalDateTime productRegistrationDate;
 
@@ -89,20 +89,3 @@ public class Car {
     private Assessor assessor;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
