@@ -22,11 +22,8 @@ public class Delivery {
 
     private String number;
 
-    private String zipCode;
-
-    private String address;
-
-    private String detailAddress;
+    @Embedded
+    private Address address;
 
     private String hopeDeliveryDate; //희망 배송일
 

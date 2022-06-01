@@ -22,11 +22,8 @@ public class OrderForm {
 
     private String socialSecurityNumber;
 
-    private String zipCode;
-
-    private String address;
-
-    private String detailAddress;
+    @Embedded
+    private Address address;
 
     private String email;
 
