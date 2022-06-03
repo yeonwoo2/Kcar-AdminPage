@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Getter @Setter
+@Getter @Setter// setter 추후에 지우기
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Car {
 
@@ -63,5 +63,15 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "assessor_id")
     private Assessor assessor;
+
+    public void changeCarInfo(String carNumber, String vehicleType, String seater, String modelYear,String mileage, String color, SalesStatus salesStatus){
+        this.carNumber = carNumber;
+        this.vehicleType = vehicleType;
+        this.seater = seater;
+        this.modelYear = modelYear;
+        this.mileage = mileage;
+        this.color = color;
+        this.salesStatus = salesStatus;
+    }
 
 }
