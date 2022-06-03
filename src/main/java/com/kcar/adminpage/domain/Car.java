@@ -19,11 +19,7 @@ public class Car {
 
     private String name;
 
-    private int carPrice; // 가격
-
-    private int registrationFee;
-
-    private int managementCost;
+    private String carNumber;
 
     private String vehicleType; // enum?
 
@@ -47,35 +43,15 @@ public class Car {
 
     private String transmission; // enum?
 
-    private String accident; // enum?
+    private boolean accident;
 
-    private String options; // enum?
+    private String driveType; // enum?
 
     private String image; //img -> 수정요함
 
-    private String subImage; //img -> 수정요함
-
-    private int sheetMetal;
-
-    private int exchange;  // enum?
-
-    private String useChange; // enum? 있음 없음
-
-    private int detailedCondition; // enum?
-
-    private int damageMyCar;
-
-    private int relativeDamage;
-
-    private int useChangeHistory; // 있음 없음 enum?
-
-    private int specialAccidentHistory; //enum? 있음 없음
+    private int stockQuantity;
 
     private LocalDateTime productRegistrationDate;
-
-    private String carNumber;
-
-    private int stockQuantity;
 
     @Enumerated(EnumType.STRING)
     private SalesStatus salesStatus; // READY, ON, STOP
