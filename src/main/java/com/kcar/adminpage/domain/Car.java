@@ -47,6 +47,7 @@ public class Car {
 
     private String driveType; // enum?
 
+    @Lob
     private String image; //img -> 수정요함
 
     private int stockQuantity;

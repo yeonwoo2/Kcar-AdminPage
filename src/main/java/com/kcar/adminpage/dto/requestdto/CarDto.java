@@ -37,4 +37,26 @@ public class CarDto {
         private int stockQuantity;
         private SalesStatus salesStatus; // READY, ON, STOP
     }
+
+    @AllArgsConstructor
+    public static class responseInfo{
+        private String name;
+        private String carNumber;
+//        private String vehicleType; // enum?
+//        private String seater;
+//        private String modelYear;
+//        private String mileage;
+//        private String color; // enum?
+//        private String fuel; // enum?
+//        private String importStatus; // enum?
+//        private String manufacturer; // enum?
+//        private String model; // enum?
+//        private String detailModel; // enum?
+//        private String transmission; // enum?
+//        private boolean accident;
+//        private String driveType; // enum?
+//        private String image; //img -> 수정요함
+//        private int stockQuantity;
+//        private SalesStatus salesStatus; // READY, ON, STOP
+    }
 }
