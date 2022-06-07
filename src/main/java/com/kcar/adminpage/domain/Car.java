@@ -51,8 +51,6 @@ public class Car {
 
     private int stockQuantity;
 
-    private LocalDateTime productRegistrationDate;
-
     @Enumerated(EnumType.STRING)
     private SalesStatus salesStatus; // READY, ON, STOP
 
@@ -64,14 +62,67 @@ public class Car {
     @JoinColumn(name = "assessor_id")
     private Assessor assessor;
 
-    public void changeCarInfo(String carNumber, String vehicleType, String seater, String modelYear,String mileage, String color, SalesStatus salesStatus){
-        this.carNumber = carNumber;
-        this.vehicleType = vehicleType;
-        this.seater = seater;
-        this.modelYear = modelYear;
-        this.mileage = mileage;
-        this.color = color;
+    private LocalDateTime productRegistrationDate;
+
+    public void SetCategory(Category categories){
+        this.categories = categories;
+    }
+
+    public void SetAssessor(Assessor assessor){
+        this.assessor = assessor;
+    }
+
+    public void changeCarInfo(String importStatus, SalesStatus salesStatus, boolean accident, int stockQuantity){
+        this.importStatus = importStatus;
         this.salesStatus = salesStatus;
+        this.accident = accident;
+        this.stockQuantity = stockQuantity;
+    }
+
+    //==생성 메서드==//
+    public static Car createCar(String name,
+                                String carNumber,
+                                String vehicleType,
+                                String seater,
+                                String modelYear,
+                                String mileage,
+                                String color,
+                                String fuel,
+                                String importStatus,
+                                String manufacturer,
+                                String model,
+                                String detailModel,
+                                String transmission,
+                                boolean accident,
+                                String driveType,
+                                String image,
+                                int stockQuantity,
+                                SalesStatus salesStatus,
+                                Category categories,
+                                Assessor assessor){
+        Car car = new Car();
+        car.name = name;
+        car.carNumber = carNumber;
+        car.vehicleType = vehicleType;
+        car.seater = seater;
+        car.modelYear = modelYear;
+        car.mileage = mileage;
+        car.color = color;
+        car.fuel = fuel;
+        car.importStatus = importStatus;
+        car.manufacturer = manufacturer;
+        car.model = model;
+        car.detailModel = detailModel;
+        car.transmission = transmission;
+        car.accident = accident;
+        car.driveType = driveType;
+        car.image = image;
+        car.stockQuantity = stockQuantity;
+        car.salesStatus = salesStatus;
+        car.categories = categories;
+        car.assessor = assessor;
+
+        return car;
     }
 
 }

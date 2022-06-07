@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.sql.ordering.antlr.OrderByFragment;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -41,4 +42,12 @@ public class OrderCar {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id")
     private Car car;
+
+    public void SetOrderForm(OrderForm orderForm){
+        this.orderForm = orderForm;
+    }
+
+    public void SetCar(Car car){
+        this.car = car;
+    }
 }

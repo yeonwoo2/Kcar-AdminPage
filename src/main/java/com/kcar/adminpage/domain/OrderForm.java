@@ -44,4 +44,12 @@ public class OrderForm {
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
+    public void SetUser(User user){
+        this.user = user;
+    }
+
+    public void SetDelivery(Delivery delivery){
+        this.delivery = delivery;
+    }
+
 }

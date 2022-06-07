@@ -20,4 +20,8 @@ public class Category {
     @ManyToOne
     @JoinColumn(name = "parent_id")
     private Category parent;
+
+    public void SetParentCategory(Category parent){
+        this.parent = parent;
+    }
 }
