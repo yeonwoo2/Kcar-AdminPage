@@ -3,8 +3,7 @@ package com.kcar.adminpage.service;
 import com.kcar.adminpage.domain.Assessor;
 import com.kcar.adminpage.domain.Car;
 import com.kcar.adminpage.domain.Category;
-import com.kcar.adminpage.dto.requestdto.RequestCarDto;
-import com.kcar.adminpage.dto.responsedto.ResponseCarDto;
+import com.kcar.adminpage.dto.CarDto;
 import com.kcar.adminpage.repository.AssessorRepository;
 import com.kcar.adminpage.repository.CarRepository;
 import com.kcar.adminpage.repository.CategoryRepository;
@@ -25,7 +24,7 @@ public class CarService {
     private final AssessorRepository assessorRepository;
 
     @Transactional // 차량 등록
-    public void saveCar(RequestCarDto.PostInfo info){
+    public void saveCar(CarDto.PostInfo info){
 
         Category category = categoryRepository.findByName(info.getCategoryName());// 단건 조회
         Assessor assessor = assessorRepository.findByEmployeeNumber(info.getAssessorEmployeeNumber());//단건 조회
@@ -54,16 +53,16 @@ public class CarService {
     }
 
     @Transactional // 차량 업데이트
-    public void updateCar(Long carId, RequestCarDto.UpdateInfo updateInfo){
+    public void updateCar(Long carId, CarDto.UpdateInfo updateInfo){
         Car findCar = carRepository.findOne(carId);
         findCar.changeCarInfo(updateInfo.getImportStatus(), updateInfo.getSalesStatus(), updateInfo.isAccident(), updateInfo.getStockQuantity());
     }
 
     //모든차량 검색
-    public List<ResponseCarDto.GetInfo> findAllCarInfo(){
+    public List<CarDto.GetInfo> findAllCarInfo(){
         List<Car> carList = carRepository.findAllWithCategoryAndAssessor();
         return carList.stream()
-                .map(c -> new ResponseCarDto.GetInfo(c.getName(),
+                .map(c -> new CarDto.GetInfo(c.getName(),
                                                     c.getCarNumber(),
                                                     c.getVehicleType(),
                                                     c.getSeater(),

@@ -5,12 +5,16 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
-@Getter @Setter// setter 추후에 지우기
+@Entity @Getter
+@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Car {
 
@@ -63,7 +67,11 @@ public class Car {
     @JoinColumn(name = "assessor_id")
     private Assessor assessor;
 
-    private LocalDateTime productRegistrationDate;
+    @CreatedDate
+    private LocalDateTime registrationDate;
+
+    @LastModifiedDate
+    private LocalDateTime modifiedDate;
 
     public void changeCarInfo(String importStatus, SalesStatus salesStatus, boolean accident, int stockQuantity){
         this.importStatus = importStatus;
