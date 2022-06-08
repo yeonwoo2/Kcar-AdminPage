@@ -1,7 +1,6 @@
 package com.kcar.adminpage.repository;
 
 import com.kcar.adminpage.domain.Assessor;
-import com.kcar.adminpage.domain.Car;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -27,9 +26,9 @@ public class AssessorRepository {
                 .getResultList();
     }
 
-    public List<Assessor> findByName(String name){
-        return em.createQuery("select a from Assessor a where a.name =: name", Assessor.class)
-                .setParameter("name", name)
-                .getResultList();
+    public Assessor findByEmployeeNumber(String employeeNumber){ // 사번은 고유해야한다 따라서 단건 조회
+        return em.createQuery("select a from Assessor a where a.employeeNumber =: employeeNumber", Assessor.class)
+                .setParameter("employeeNumber", employeeNumber)
+                .getSingleResult();
     }
 }

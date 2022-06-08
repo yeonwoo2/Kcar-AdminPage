@@ -1,12 +1,9 @@
 package com.kcar.adminpage.controller.api;
 
-import com.kcar.adminpage.domain.Car;
-import com.kcar.adminpage.dto.requestdto.CarDto;
-import com.kcar.adminpage.repository.CarRepository;
+import com.kcar.adminpage.dto.requestdto.RequestCarDto;
+import com.kcar.adminpage.dto.responsedto.ResponseCarDto;
 import com.kcar.adminpage.service.CarService;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,38 +13,30 @@ import java.util.List;
 public class CarApiController {
 
     private final CarService carService;
-    private final CarRepository carRepository;
 
-    @GetMapping("/api/allCar") //모든차량 조회
+    @GetMapping("/api/cars") //모든차량 조회
     public Result carList(){
-        List<Car> allCarInfo = carService.findAllCarInfo(); //dto 사용 권장
-//        List<CarDto.responseInfo> collect = allCarInfo.stream()
-//                .map(c -> new CarDto.responseInfo(c.getName(), c.getCarNumber()))
-//                .collect(Collectors.toList());
+        List<ResponseCarDto.GetInfo> allCarInfo = carService.findAllCarInfo(); //dto 사용 권장
         return new Result(allCarInfo.size(), allCarInfo);
     }
 
-    @GetMapping("/api/car/{id}") //차량 한대 조회
-    public Car oneCar(@PathVariable("id") Long id){
-        return carRepository.findOne(id);
+//    @GetMapping("/api/car/{id}") //차량 한대 조회 -> 필요?
+//    public Car oneCar(@PathVariable("id") Long id){
+//        return carRepository.findOne(id);
+//    }
+
+    @PostMapping("/api/car-save") //차량 등록 -> return httpResponse... 작업요함
+    public void carSave(@RequestBody RequestCarDto.PostInfo info){
+        carService.saveCar(info);
     }
 
-    @PostMapping("/api/carSave") //차량 등록
-    public void carSave(@RequestBody CarDto.Info info,
-                        @RequestParam("categoryId") Long categoryId,
-                        @RequestParam("assessorId") Long assessorId){
-        carService.saveCar(info, categoryId, assessorId);
-    }
-
-    @PutMapping("/api/cars/{id}")
-    public void updateCarInfo(
-            @PathVariable("id") Long id,
-            @RequestBody CarDto.UpdateInfo request){
-
+    @PutMapping("/api/cars/{id}") //차량 정보 업데이트 -> return httpResponse... 작업요함
+    public void updateCarInfo(@PathVariable("id") Long id,
+                              @RequestBody RequestCarDto.UpdateInfo request){
         carService.updateCar(id, request);
     }
 
-    @Data
+    @Getter @Setter
     @AllArgsConstructor
     static class Result<T> {
         private int cnt;

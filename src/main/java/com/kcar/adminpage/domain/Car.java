@@ -55,23 +55,15 @@ public class Car {
     @Enumerated(EnumType.STRING)
     private SalesStatus salesStatus; // READY, ON, STOP
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category categories;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "assessor_id")
     private Assessor assessor;
 
     private LocalDateTime productRegistrationDate;
-
-    public void SetCategory(Category categories){
-        this.categories = categories;
-    }
-
-    public void SetAssessor(Assessor assessor){
-        this.assessor = assessor;
-    }
 
     public void changeCarInfo(String importStatus, SalesStatus salesStatus, boolean accident, int stockQuantity){
         this.importStatus = importStatus;

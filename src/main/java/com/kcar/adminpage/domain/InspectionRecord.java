@@ -17,7 +17,7 @@ public class InspectionRecord {
     private Long id;
 
     @MapsId
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     private Car car;
 

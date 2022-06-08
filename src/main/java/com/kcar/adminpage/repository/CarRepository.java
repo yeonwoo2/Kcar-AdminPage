@@ -31,4 +31,11 @@ public class CarRepository {
                 .setParameter("name", name)
                 .getResultList();
     }
+
+    public List<Car> findAllWithCategoryAndAssessor(){
+        return em.createQuery("select c from Car c" +
+                                      " left join fetch c.categories t" +
+                                      " left join fetch c.assessor a", Car.class)
+                .getResultList();
+    }
 }
