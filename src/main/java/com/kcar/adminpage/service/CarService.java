@@ -1,12 +1,8 @@
 package com.kcar.adminpage.service;
 
-import com.kcar.adminpage.domain.Assessor;
-import com.kcar.adminpage.domain.Car;
-import com.kcar.adminpage.domain.Category;
+import com.kcar.adminpage.domain.*;
 import com.kcar.adminpage.dto.CarDto;
-import com.kcar.adminpage.repository.AssessorRepository;
-import com.kcar.adminpage.repository.CarRepository;
-import com.kcar.adminpage.repository.CategoryRepository;
+import com.kcar.adminpage.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,12 +18,17 @@ public class CarService {
     private final CarRepository carRepository;
     private final CategoryRepository categoryRepository;
     private final AssessorRepository assessorRepository;
+    private final PurchaseCostRepository purchaseCostRepository;
+    private final InsuranceHistoryRepository insuranceHistoryRepository;
+    private final InspectionRecordRepository inspectionRecordRepository;
+
 
     @Transactional // 차량 등록
     public void saveCar(CarDto.PostInfo info){
 
         Category category = categoryRepository.findByName(info.getCategoryName());// 단건 조회
         Assessor assessor = assessorRepository.findByEmployeeNumber(info.getAssessorEmployeeNumber());//단건 조회
+
 
         Car car = Car.createCar(info.getName(),
                                 info.getCarNumber(),
@@ -49,13 +50,32 @@ public class CarService {
                                 info.getSalesStatus(),
                                 category,
                                 assessor);
+
+        //차량 가격 생성
+        PurchaseCost purchaseCost = PurchaseCost.createCost(car, info.getPurchaseCost().getCarPrice(),
+                                                                 info.getPurchaseCost().getRegistrationFee(),
+                                                                 info.getPurchaseCost().getManagementCost());
+        //보험이력 생성
+        InsuranceHistory insuranceHistory = InsuranceHistory.createInsurance(car, info.getInsuranceHistory().getDamageMyCar(),
+                                                                                  info.getInsuranceHistory().getRelativeDamage(),
+                                                                                  info.getInsuranceHistory().isUseChangeHistory(),
+                                                                                  info.getInsuranceHistory().isSpecialAccidentHistory());
+
+        InspectionRecord inspectionRecord = InspectionRecord.createInspection(car, info.getInspectionRecord().getSheetMetal(),
+                                                                                   info.getInspectionRecord().getExchange(),
+                                                                                   info.getInspectionRecord().isUseChange(),
+                                                                                   info.getInspectionRecord().getDetailedCondition());
+
+        inspectionRecordRepository.save(inspectionRecord);
+        insuranceHistoryRepository.save(insuranceHistory);
+        purchaseCostRepository.save(purchaseCost);
         carRepository.save(car);
     }
 
     @Transactional // 차량 업데이트
     public void updateCar(Long carId, CarDto.UpdateInfo updateInfo){
         Car findCar = carRepository.findOne(carId);
-        findCar.changeCarInfo(updateInfo.getImportStatus(), updateInfo.getSalesStatus(), updateInfo.isAccident(), updateInfo.getStockQuantity());
+        findCar.changeCarInfo(updateInfo.getSalesStatus(), updateInfo.getStockQuantity());
     }
 
     //모든차량 검색

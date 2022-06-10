@@ -1,10 +1,7 @@
 package com.kcar.adminpage.domain;
 
 import com.kcar.adminpage.enums.SalesStatus;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -13,7 +10,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity @Getter
+@Entity
+@Getter
 @EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Car {
@@ -73,10 +71,8 @@ public class Car {
     @LastModifiedDate
     private LocalDateTime modifiedDate;
 
-    public void changeCarInfo(String importStatus, SalesStatus salesStatus, boolean accident, int stockQuantity){
-        this.importStatus = importStatus;
+    public void changeCarInfo(SalesStatus salesStatus, int stockQuantity){
         this.salesStatus = salesStatus;
-        this.accident = accident;
         this.stockQuantity = stockQuantity;
     }
 

@@ -25,4 +25,14 @@ public class PurchaseCost {
     private int registrationFee;
 
     private int managementCost;
+
+    //==생성 메서드==//
+    public static PurchaseCost createCost(Car car, int carPrice, int registrationFee, int managementCost){
+        PurchaseCost purchaseCost = new PurchaseCost();
+        purchaseCost.car = car;
+        purchaseCost.carPrice = carPrice;
+        purchaseCost.registrationFee = registrationFee;
+        purchaseCost.managementCost = managementCost;
+        return purchaseCost;
+    }
 }

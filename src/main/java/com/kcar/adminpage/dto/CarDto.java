@@ -29,8 +29,8 @@ public class CarDto {
         private String image; //img -> 수정요함
         private int stockQuantity;
         private SalesStatus salesStatus; // READY, ON, STOP
-        private String categoryName;
-        private String assessorName;
+        private String categoryName; // 카테고리이름
+        private String assessorName; // 차량평가사 이름
     }
 
     @Getter @Setter
@@ -55,6 +55,9 @@ public class CarDto {
         private SalesStatus salesStatus; // READY, ON, STOP
         private String categoryName; //카테고리 이름
         private String assessorEmployeeNumber; //사번
+        private PurchaseCostDto purchaseCost; // 가격정보
+        private InspectionRecordDto inspectionRecord; // 성능.상태점검기록
+        private InsuranceHistoryDto insuranceHistory; // 보험이력
     }
 
     @Getter @Setter
