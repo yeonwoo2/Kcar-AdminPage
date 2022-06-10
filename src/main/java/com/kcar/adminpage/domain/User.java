@@ -1,6 +1,6 @@
 package com.kcar.adminpage.domain;
 
-import com.kcar.adminpage.enums.Authority;
+import com.kcar.adminpage.domain.enums.Authority;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

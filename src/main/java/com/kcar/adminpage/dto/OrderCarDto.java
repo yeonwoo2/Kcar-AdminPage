@@ -12,30 +12,26 @@ public class OrderCarDto {
     @Setter
     @AllArgsConstructor
     public static class GetInfo{
-        private Long orderCarId;
-        private String deadlinePaymentDate; //마감기한
-        private String OrderStatus;
-        private String carName;
-        private String accountNumber;
-        private String account;
-        private String holderName;
-        private String holderNumber;
-        private String claimStatus;
-        private String purchaseStatus;
+        private Long orderCarId; // 주문번호
+        private String OrderStatus; //주문상태
+        private String holderName; // 명의자명
+        private String holderNumber; //전화번호
+        private String account;// 은행
+        private String accountNumber; // 계좌번호
+        private String itemName; // 상품명
+        private String paymentDate; //결제일
+        private String deadlinePaymentDate; //입금기한
+        private String orderDate; //주문일
     }
 
     @Getter
     @Setter
     @AllArgsConstructor
     public static class PostInfo{
-        private Long orderCarId;
         private String claimStatus;
         private String purchaseStatus;
         private String orderStatus;
-        private String deadlinePaymentDate;
-        private String paymentDate;
-        private String orderDate;
-        private Long carId;
-        private Long orderId;
+        private int carId;
+        private int orderFormId;
     }
 }

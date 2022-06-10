@@ -1,6 +1,5 @@
 package com.kcar.adminpage.repository;
 
-import com.kcar.adminpage.domain.OrderCar;
 import com.kcar.adminpage.domain.OrderForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

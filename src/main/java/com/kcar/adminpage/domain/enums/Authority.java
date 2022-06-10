@@ -1,4 +1,4 @@
-package com.kcar.adminpage.enums;
+package com.kcar.adminpage.domain.enums;
 
 public enum Authority {
     ADMIN, USER

@@ -1,6 +1,6 @@
 package com.kcar.adminpage.dto;
 
-import com.kcar.adminpage.enums.SalesStatus;
+import com.kcar.adminpage.domain.enums.SalesStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

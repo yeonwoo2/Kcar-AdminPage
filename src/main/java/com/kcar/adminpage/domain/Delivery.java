@@ -1,6 +1,6 @@
 package com.kcar.adminpage.domain;
 
-import com.kcar.adminpage.enums.DeliveryStatus;
+import com.kcar.adminpage.domain.enums.DeliveryStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

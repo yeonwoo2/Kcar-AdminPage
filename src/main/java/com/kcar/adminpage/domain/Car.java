@@ -1,8 +1,7 @@
 package com.kcar.adminpage.domain;
 
-import com.kcar.adminpage.enums.SalesStatus;
+import com.kcar.adminpage.domain.enums.SalesStatus;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
