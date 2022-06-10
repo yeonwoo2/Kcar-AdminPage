@@ -1,6 +1,5 @@
 package com.kcar.adminpage.domain;
 
-import com.kcar.adminpage.enums.ReductionStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,8 +26,7 @@ public class OrderForm {
 
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    private ReductionStatus reductionStatus;
+    private boolean reductionStatus;
 
     private String bank;
 
@@ -43,13 +41,5 @@ public class OrderForm {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
-
-    public void SetUser(User user){
-        this.user = user;
-    }
-
-    public void SetDelivery(Delivery delivery){
-        this.delivery = delivery;
-    }
 
 }

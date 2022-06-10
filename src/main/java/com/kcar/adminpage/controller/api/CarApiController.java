@@ -1,6 +1,7 @@
 package com.kcar.adminpage.controller.api;
 
 import com.kcar.adminpage.dto.CarDto;
+import com.kcar.adminpage.dto.Result;
 import com.kcar.adminpage.service.CarService;
 import lombok.*;
 import org.springframework.web.bind.annotation.*;
@@ -33,12 +34,5 @@ public class CarApiController {
     public void updateCarInfo(@PathVariable("id") Long id,
                               @RequestBody CarDto.UpdateInfo request){
         carService.updateCar(id, request);
-    }
-
-    @Getter @Setter
-    @AllArgsConstructor
-    static class Result<T> {
-        private int cnt;
-        private T data;
     }
 }

@@ -35,4 +35,9 @@ public class PurchaseCost {
         purchaseCost.managementCost = managementCost;
         return purchaseCost;
     }
+
+    //총 가격 조회
+    public int getTotalPrice(){
+        return carPrice + registrationFee + managementCost;
+    }
 }

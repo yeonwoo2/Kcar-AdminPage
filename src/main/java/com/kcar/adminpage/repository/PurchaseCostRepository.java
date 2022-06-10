@@ -15,4 +15,5 @@ public class PurchaseCostRepository {
     public void save(PurchaseCost purchaseCost){
         em.persist(purchaseCost);
     }
+
 }
