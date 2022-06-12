@@ -63,9 +63,8 @@ public class CarDto {
     @Getter @Setter
     @AllArgsConstructor
     public static class UpdateInfo{
-        private String importStatus;
         private SalesStatus salesStatus;
-        private boolean accident;
         private int stockQuantity;
     }
+
 }

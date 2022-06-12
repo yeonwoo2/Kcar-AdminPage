@@ -1,5 +1,6 @@
 package com.kcar.adminpage.repository;
 
+import com.kcar.adminpage.domain.Car;
 import com.kcar.adminpage.domain.InspectionRecord;
 import com.kcar.adminpage.domain.PurchaseCost;
 import lombok.RequiredArgsConstructor;
@@ -15,5 +16,14 @@ public class InspectionRecordRepository {
 
     public void save(InspectionRecord inspectionRecord){
         em.persist(inspectionRecord);
+    }
+
+    public InspectionRecord findOne(Long id){
+        return em.find(InspectionRecord.class, id);
+    }
+
+    public void delete(Long id) {
+        InspectionRecord inspectionRecord = em.find(InspectionRecord.class, id);
+        em.remove(inspectionRecord);
     }
 }

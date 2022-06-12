@@ -35,4 +35,9 @@ public class CarApiController {
                               @RequestBody CarDto.UpdateInfo request){
         carService.updateCar(id, request);
     }
+
+    @DeleteMapping("/api/cars/{id}")
+    public void deleteCar(@PathVariable("id") Long id){
+        carService.deleteCar(id);
+    }
 }

@@ -1,6 +1,7 @@
 package com.kcar.adminpage.service;
 
 import com.kcar.adminpage.domain.*;
+import com.kcar.adminpage.domain.enums.SalesStatus;
 import com.kcar.adminpage.dto.CarDto;
 import com.kcar.adminpage.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,8 @@ public class CarService {
     private final PurchaseCostRepository purchaseCostRepository;
     private final InsuranceHistoryRepository insuranceHistoryRepository;
     private final InspectionRecordRepository inspectionRecordRepository;
+    private final OrderCarRepository orderCarRepository;
+
 
 
     @Transactional // 차량 등록
@@ -105,4 +108,16 @@ public class CarService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
+    public void deleteCar(Long id) {
+        Car car = carRepository.findOne(id);
+        if(!car.getSalesStatus().equals(SalesStatus.STOP)){
+            throw new IllegalStateException("판매중지된 상품이 아닙니다.");
+        }
+
+        inspectionRecordRepository.delete(id); //연관관계 제거
+        insuranceHistoryRepository.delete(id); //연관관계 제거
+        purchaseCostRepository.delete(id); //연관관계 제거
+        carRepository.delete(car); //차량제거
+    }
 }

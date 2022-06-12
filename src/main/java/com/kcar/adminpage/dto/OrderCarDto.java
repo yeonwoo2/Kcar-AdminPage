@@ -12,7 +12,8 @@ public class OrderCarDto {
     @Setter
     @AllArgsConstructor
     public static class GetInfo{
-        private Long orderCarId; // 주문번호
+
+        private Long orderId; // 주문번호
         private String OrderStatus; //주문상태
         private String holderName; // 명의자명
         private String holderNumber; //전화번호

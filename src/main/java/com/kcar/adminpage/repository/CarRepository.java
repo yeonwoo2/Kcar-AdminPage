@@ -38,4 +38,8 @@ public class CarRepository {
                                       " left join fetch c.assessor a", Car.class)
                 .getResultList();
     }
+
+    public void delete(Car car) {
+        em.remove(car);
+    }
 }

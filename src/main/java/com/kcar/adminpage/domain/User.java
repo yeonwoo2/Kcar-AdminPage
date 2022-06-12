@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class User {
 
     @Id // 추후 회원 아이디로 변경할 예정
-    private String id;
+    private Long id;
 
     private String password;
 
