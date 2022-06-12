@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -33,9 +34,12 @@ public class Delivery {
     @Enumerated(EnumType.STRING)
     private DeliveryStatus deliveryStatus; // 수정시 배송 완료 찍힘
 
-    private LocalDateTime deliveryCompleteDate; //배송 완료 날짜
+    private String deliveryCompleteDate; //배송 완료 날짜
 
     @LastModifiedDate
-    private LocalDateTime modifiedDate; // 업데이트 시간 -> Auditing 기능 추가 요함
+    private LocalDateTime modifiedDate; // 업데이트 시간
+
+    @CreatedDate
+    private LocalDateTime createDate;
 
 }

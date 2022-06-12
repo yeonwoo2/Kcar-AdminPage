@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class CarApiController {
+public class CarController {
 
     private final CarService carService;
 
