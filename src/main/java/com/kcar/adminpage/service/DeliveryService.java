@@ -27,8 +27,8 @@ public class DeliveryService {
                                                 d.getDeliveryStatus(),
                                                 d.getHopeDeliveryDate(),
                                                 d.getDeliveryCompleteDate(),
-                                                d.getCreateDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm")), // nullpointer 발생 -> string 필드로 변환
-                                                d.getModifiedDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm")),
+                                                d.getCreateDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
+                                                d.getModifiedDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
                                                 d.getAddress()))
                 .collect(Collectors.toList());
     }

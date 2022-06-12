@@ -1,6 +1,5 @@
 package com.kcar.adminpage.controller.api;
 
-import com.kcar.adminpage.dto.CarDto;
 import com.kcar.adminpage.dto.Result;
 import com.kcar.adminpage.dto.UserDto;
 import com.kcar.adminpage.service.UserService;

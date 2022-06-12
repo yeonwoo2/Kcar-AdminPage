@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -82,7 +83,10 @@ public class CarService {
     public List<CarDto.GetInfo> findAllCarInfo(){
         List<Car> carList = carRepository.findAllWithCategoryAndAssessor();
         return carList.stream()
-                .map(c -> new CarDto.GetInfo(c.getName(),
+                .map(c -> new CarDto.GetInfo(c.getId(),
+                                                    c.getSalesStatus(),
+                                                    c.getImportStatus(),
+                                                    c.getName(),
                                                     c.getCarNumber(),
                                                     c.getVehicleType(),
                                                     c.getSeater(),
@@ -90,18 +94,17 @@ public class CarService {
                                                     c.getMileage(),
                                                     c.getColor(),
                                                     c.getFuel(),
-                                                    c.getImportStatus(),
                                                     c.getManufacturer(),
                                                     c.getModel(),
                                                     c.getDetailModel(),
                                                     c.getTransmission(),
                                                     c.isAccident(),
                                                     c.getDriveType(),
-                                                    c.getImage(),
-                                                    c.getStockQuantity(),
-                                                    c.getSalesStatus(),
                                                     c.getCategories().getName(),
-                                                    c.getAssessor().getName()))
+                                                    c.getAssessor().getName(),
+                                                    c.getAssessor().getDirectShop(),
+                                                    c.getStockQuantity(),
+                                                    c.getRegistrationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))))
                 .collect(Collectors.toList());
     }
 

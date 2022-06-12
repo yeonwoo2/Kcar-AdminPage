@@ -35,8 +35,8 @@ public class OrderCarService {
                                 o.getCar().getName(),
                                 o.getOrderStatus(),
                                 o.getPaymentDate(), // nullpointer 발생 -> string 필드로 변환
-                                o.getDeadlinePaymentDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm")),
-                                o.getOrderDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"))))
+                                o.getDeadlinePaymentDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
+                                o.getOrderDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))))
                 .collect(Collectors.toList());
     }
 

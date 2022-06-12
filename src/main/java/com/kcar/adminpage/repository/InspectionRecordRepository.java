@@ -1,8 +1,6 @@
 package com.kcar.adminpage.repository;
 
-import com.kcar.adminpage.domain.Car;
 import com.kcar.adminpage.domain.InspectionRecord;
-import com.kcar.adminpage.domain.PurchaseCost;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
