@@ -23,9 +23,9 @@ public class OrderCarController {
         return new Result(orders.size(), orders);
     }
 
-    @PostMapping("/api/order-car-save")
-    public void orderCarSave(@RequestBody OrderCarDto.PostInfo info){
-        orderCarService.saveOrder(info);
-    }
+//    @PostMapping("/api/order-car-save")
+//    public void orderCarSave(@RequestBody OrderCarDto.PostInfo info){
+//        orderCarService.saveOrder(info);
+//    }
 
 }

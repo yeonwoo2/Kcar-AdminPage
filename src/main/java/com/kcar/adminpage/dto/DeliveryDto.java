@@ -15,11 +15,22 @@ public class DeliveryDto {
         private Long deliveryId;
         private String receiver;
         private String PhoneNumber;
-        private Address address;
         private DeliveryStatus deliveryStatus;
         private String hopeDate;
         private String deliveryCompDate;
         private String createDate;
         private String modifiedDate;
+        private Address address;
+    }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    public static class UpdateInfo {
+        private String receiver;
+        private String PhoneNumber;
+        private DeliveryStatus deliveryStatus;
+        private String hopeDate;
+        private Address address;
     }
 }

@@ -1,6 +1,7 @@
 package com.kcar.adminpage.domain;
 
 import com.kcar.adminpage.domain.enums.DeliveryStatus;
+import com.kcar.adminpage.domain.enums.SalesStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,5 +42,13 @@ public class Delivery {
 
     @CreatedDate
     private LocalDateTime createDate;
+
+    public void changeDeliveryInfo(String receiver, String number, Address address, DeliveryStatus deliveryStatus, String hopeDate){
+        this.receiver = receiver;
+        this.number = number;
+        this.address = address;
+        this.deliveryStatus = deliveryStatus;
+        this.deliveryCompleteDate = hopeDate;
+    }
 
 }

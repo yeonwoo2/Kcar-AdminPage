@@ -3,10 +3,12 @@ package com.kcar.adminpage.service;
 import com.kcar.adminpage.domain.Car;
 import com.kcar.adminpage.domain.OrderCar;
 import com.kcar.adminpage.domain.OrderForm;
+import com.kcar.adminpage.domain.PurchaseCost;
 import com.kcar.adminpage.dto.OrderCarDto;
 import com.kcar.adminpage.repository.CarRepository;
 import com.kcar.adminpage.repository.OrderCarRepository;
 import com.kcar.adminpage.repository.OrderFormRepository;
+import com.kcar.adminpage.repository.PurchaseCostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,8 +23,6 @@ import java.util.stream.Collectors;
 public class OrderCarService {
 
     private final OrderCarRepository orderCarRepository;
-    private final CarRepository carRepository;
-    private final OrderFormRepository orderFormRepository;
 
     public List<OrderCarDto.GetInfo> findAllOrders (){
         List<OrderCar> allWithOrderFormAndCar = orderCarRepository.findAllWithOrderFormAndCar();
@@ -43,12 +43,12 @@ public class OrderCarService {
     /**
      * 테스트 작성
      */
-    @Transactional
-    public void saveOrder(OrderCarDto.PostInfo info){
-        Car car = carRepository.findOne(1L);
-        OrderForm orderForm = orderFormRepository.findOne(1L);
-
-        OrderCar orderCar = OrderCar.createOrderCar(info.getOrderStatus(), orderForm, car);
-        orderCarRepository.save(orderCar);
-    }
+//    @Transactional
+//    public void saveOrder(OrderCarDto.PostInfo info){
+//        Car car = carRepository.findOne(1L);
+//        OrderForm orderForm = orderFormRepository.findOne(1L);
+//
+//        OrderCar orderCar = OrderCar.createOrderCar(info.getOrderStatus(), orderForm, car);
+//        orderCarRepository.save(orderCar);
+//    }
 }

@@ -22,9 +22,6 @@ public class CarService {
     private final PurchaseCostRepository purchaseCostRepository;
     private final InsuranceHistoryRepository insuranceHistoryRepository;
     private final InspectionRecordRepository inspectionRecordRepository;
-    private final OrderCarRepository orderCarRepository;
-
-
 
     @Transactional // 차량 등록
     public void saveCar(CarDto.PostInfo info){

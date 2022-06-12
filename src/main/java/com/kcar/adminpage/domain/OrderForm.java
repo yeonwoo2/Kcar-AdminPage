@@ -42,4 +42,7 @@ public class OrderForm {
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
+    @OneToOne(mappedBy = "orderForm", fetch = FetchType.LAZY)
+    private OrderCar orderCar;
+
 }

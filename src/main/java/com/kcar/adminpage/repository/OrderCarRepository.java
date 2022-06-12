@@ -28,9 +28,4 @@ public class OrderCarRepository {
                 .getResultList();
     }
 
-    public void delete(Long id) {
-        em.createQuery("delete from OrderCar o where o.car.id =: id")
-                .setParameter("id", id);
-    }
-
 }

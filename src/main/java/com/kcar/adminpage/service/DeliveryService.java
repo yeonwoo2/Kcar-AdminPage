@@ -24,12 +24,22 @@ public class DeliveryService {
                 .map(d -> new DeliveryDto.GetInfo(d.getId(),
                                                 d.getReceiver(),
                                                 d.getNumber(),
-                                                d.getAddress(),
                                                 d.getDeliveryStatus(),
                                                 d.getHopeDeliveryDate(),
                                                 d.getDeliveryCompleteDate(),
                                                 d.getCreateDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm")), // nullpointer 발생 -> string 필드로 변환
-                                                d.getModifiedDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"))))
+                                                d.getModifiedDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm")),
+                                                d.getAddress()))
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void updateDelivery(Long id, DeliveryDto.UpdateInfo updateInfo) {
+        Delivery delivery = deliveryRepository.findOne(id);
+        delivery.changeDeliveryInfo(updateInfo.getReceiver(),
+                updateInfo.getPhoneNumber(),
+                updateInfo.getAddress(),
+                updateInfo.getDeliveryStatus(),
+                updateInfo.getHopeDate());
     }
 }

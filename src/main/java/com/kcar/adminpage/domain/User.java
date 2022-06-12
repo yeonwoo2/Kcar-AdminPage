@@ -1,6 +1,7 @@
 package com.kcar.adminpage.domain;
 
 import com.kcar.adminpage.domain.enums.Authority;
+import com.kcar.adminpage.domain.enums.SalesStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,4 +28,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Authority authority; // 유저 권한 [ADMIN, USER]
 
+    public void changeUserAuth(Authority authority){
+        this.authority = authority;
+    }
 }
