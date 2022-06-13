@@ -3,6 +3,7 @@ package com.kcar.adminpage.repository;
 import com.kcar.adminpage.domain.Car;
 import com.kcar.adminpage.domain.OrderCar;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -29,10 +30,12 @@ public class OrderCarRepository {
                 .getResultList();
     }
 
-    public List<OrderCar> findByOrderCompAndDate(String orderStatus, LocalDateTime orderDate){
-        return em.createQuery("select o from OrderCar o where o.orderStatus =: orderStatus and o.orderDate <: orderDate", OrderCar.class)
+    public List<OrderCar> findByOrderCompAndDate(String orderStatus, LocalDateTime startDate, LocalDateTime endDate){
+        System.out.println("================startDate "+ startDate + " endDate " + endDate);
+        return em.createQuery("select o from OrderCar o where o.orderStatus =: orderStatus and o.orderDate <: endDate and o.orderDate >: startDate", OrderCar.class)
                 .setParameter("orderStatus", orderStatus)
-                .setParameter("orderDate", orderDate)
+                .setParameter("endDate", endDate)
+                .setParameter("startDate", startDate)
                 .getResultList();
     }
 

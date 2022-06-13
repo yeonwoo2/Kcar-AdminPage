@@ -9,10 +9,12 @@ import com.kcar.adminpage.dto.homedto.*;
 import com.kcar.adminpage.repository.CarRepository;
 import com.kcar.adminpage.repository.DeliveryRepository;
 import com.kcar.adminpage.repository.OrderCarRepository;
+import com.kcar.adminpage.util.LocalDateParser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -28,11 +30,13 @@ public class HomeService {
     private final CarRepository carRepository;
 
     public HomeDto findHomeInfo() {
+        LocalDateParser dateParser = new LocalDateParser(LocalDateTime.now()); //날짜 변환 util
+
         List<OrderCar> orderWait = orderCarRepository.findByOrderStatus("WAIT");
         List<OrderCar> orderComp = orderCarRepository.findByOrderStatus("COMP");
         List<OrderCar> orderCancel = orderCarRepository.findByOrderStatus("CANCEL");
         List<OrderCar> orderReturn = orderCarRepository.findByOrderStatus("RETURN");
-        List<OrderCar> comp = orderCarRepository.findByOrderCompAndDate("COMP", LocalDateTime.now().minusHours(23)); //수정요함
+        List<OrderCar> comp = orderCarRepository.findByOrderCompAndDate("COMP", dateParser.startDate(), dateParser.endDate()); //수정요함
 
         List<Delivery> ready = deliveryRepository.findByDeliveryStatus(DeliveryStatus.READY);
         List<Delivery> going = deliveryRepository.findByDeliveryStatus(DeliveryStatus.GOING);
@@ -50,7 +54,6 @@ public class HomeService {
         OrderAndDeliveryInfo orderAndDeliveryInfo = new OrderAndDeliveryInfo(orderWait.size(),orderComp.size(), ready.size(), going.size(), deliveryComp.size());
         ClaimAndCalculate claimAndCalculate = new ClaimAndCalculate(orderCancel.size(), orderReturn.size(), comp.size());
         CarInfoDto carInfoDto = new CarInfoDto(onSale.size(), readySale.size(), StopSale.size());
-
 
         return new HomeDto(orderAndDeliveryInfo, claimAndCalculate, carInfoDto, collect) ;
     }
