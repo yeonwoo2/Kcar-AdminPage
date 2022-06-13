@@ -1,5 +1,6 @@
 package com.kcar.adminpage.dto.homedto;
 
+import com.kcar.adminpage.dto.InquiryOfferDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,4 +18,5 @@ public class HomeDto {
     private List<RecentReviewListDto> recentReviewList;
     private UserCountDto userInfo;
     private List<StatisticsDto> statisticsList;
+    private List<InquiryOfferDto> inquiryOffer;
 }
