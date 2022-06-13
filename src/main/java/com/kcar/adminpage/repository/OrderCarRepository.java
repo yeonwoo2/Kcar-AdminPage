@@ -1,5 +1,6 @@
 package com.kcar.adminpage.repository;
 
+import com.kcar.adminpage.domain.Car;
 import com.kcar.adminpage.domain.OrderCar;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -19,6 +20,12 @@ public class OrderCarRepository {
 
     public OrderCar findOne(Long id){
         return em.find(OrderCar.class, id);
+    }
+
+    public List<OrderCar> findByOrderStatus(String orderStatus){
+        return em.createQuery("select o from OrderCar o where o.orderStatus =: orderStatus", OrderCar.class)
+                .setParameter("orderStatus", orderStatus)
+                .getResultList();
     }
 
     public List<OrderCar> findAllWithOrderFormAndCar(){
