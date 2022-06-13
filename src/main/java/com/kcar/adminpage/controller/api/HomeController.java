@@ -1,6 +1,5 @@
 package com.kcar.adminpage.controller.api;
 
-import com.kcar.adminpage.dto.Result;
 import com.kcar.adminpage.dto.homedto.HomeDto;
 import com.kcar.adminpage.service.HomeService;
 import lombok.RequiredArgsConstructor;

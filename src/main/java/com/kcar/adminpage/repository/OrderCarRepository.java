@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -25,6 +26,13 @@ public class OrderCarRepository {
     public List<OrderCar> findByOrderStatus(String orderStatus){
         return em.createQuery("select o from OrderCar o where o.orderStatus =: orderStatus", OrderCar.class)
                 .setParameter("orderStatus", orderStatus)
+                .getResultList();
+    }
+
+    public List<OrderCar> findByOrderCompAndDate(String orderStatus, LocalDateTime orderDate){
+        return em.createQuery("select o from OrderCar o where o.orderStatus =: orderStatus and o.orderDate <: orderDate", OrderCar.class)
+                .setParameter("orderStatus", orderStatus)
+                .setParameter("orderDate", orderDate)
                 .getResultList();
     }
 

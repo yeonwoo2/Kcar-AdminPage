@@ -1,10 +1,13 @@
 package com.kcar.adminpage.repository;
 
 import com.kcar.adminpage.domain.Car;
+import com.kcar.adminpage.domain.OrderCar;
+import com.kcar.adminpage.domain.enums.SalesStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -36,6 +39,19 @@ public class CarRepository {
         return em.createQuery("select c from Car c" +
                                       " left join fetch c.categories t" +
                                       " left join fetch c.assessor a", Car.class)
+                .getResultList();
+    }
+
+    public List<Car> findBySalesStatus(SalesStatus salesStatus){
+        return em.createQuery("select c from Car c where c.salesStatus =: salesStatus", Car.class)
+                .setParameter("salesStatus", salesStatus)
+                .getResultList();
+    }
+
+    public List<Car> findOrderByDate(){
+        return em.createQuery("SELECT c FROM Car c ORDER BY c.registrationDate DESC", Car.class)
+                .setFirstResult(0)
+                .setMaxResults(4)
                 .getResultList();
     }
 
