@@ -9,8 +9,12 @@ import java.util.List;
 @Getter @Setter
 @AllArgsConstructor
 public class HomeDto {
-    private OrderAndDeliveryInfo orderAndDeliveryInfo;
+    private OrderAndDeliveryInfoDto orderAndDeliveryInfoDto;
     private ClaimAndCalculate claimAndCalculate;
-    private CarInfoDto carInfoDto;
+    private CarInfoDto carInfo;
     private List<RecentCreateCarDto> recentCreateList;
+    private ReviewDto review;
+    private List<RecentReviewListDto> recentReviewList;
+    private UserCountDto userInfo;
+    private List<StatisticsDto> statisticsList;
 }

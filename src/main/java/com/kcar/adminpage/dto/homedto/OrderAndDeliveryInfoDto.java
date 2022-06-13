@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class OrderAndDeliveryInfo{
+public class OrderAndDeliveryInfoDto {
 
     private int waitPayment;
     private int compPayment;

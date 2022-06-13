@@ -33,7 +33,6 @@ public class Question {
     @Enumerated(EnumType.STRING)
     private AnswerType answerType;
 
-
     private String processedDate; //처리일
 
     @LastModifiedDate

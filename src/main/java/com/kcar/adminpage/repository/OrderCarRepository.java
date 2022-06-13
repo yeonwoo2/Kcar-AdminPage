@@ -31,7 +31,16 @@ public class OrderCarRepository {
     }
 
     public List<OrderCar> findByOrderCompAndDate(String orderStatus, LocalDateTime startDate, LocalDateTime endDate){
-        System.out.println("================startDate "+ startDate + " endDate " + endDate);
+        return em.createQuery("select o from OrderCar o where o.orderStatus =: orderStatus and o.orderDate <: endDate and o.orderDate >: startDate", OrderCar.class)
+                .setParameter("orderStatus", orderStatus)
+                .setParameter("endDate", endDate)
+                .setParameter("startDate", startDate)
+                .getResultList();
+    }
+
+    public List<OrderCar> findByOrderCompAndDateCount(String orderStatus, LocalDateTime sp, LocalDateTime ep, int i){
+        LocalDateTime startDate = sp.minusDays(i);
+        LocalDateTime endDate = ep.minusDays(i);
         return em.createQuery("select o from OrderCar o where o.orderStatus =: orderStatus and o.orderDate <: endDate and o.orderDate >: startDate", OrderCar.class)
                 .setParameter("orderStatus", orderStatus)
                 .setParameter("endDate", endDate)

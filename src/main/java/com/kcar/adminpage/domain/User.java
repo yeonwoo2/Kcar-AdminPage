@@ -6,8 +6,10 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter @Setter
@@ -27,6 +29,9 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Authority authority; // 유저 권한 [ADMIN, USER]
+
+    @CreatedDate
+    private LocalDateTime createDate;
 
     public void changeUserAuth(Authority authority){
         this.authority = authority;
