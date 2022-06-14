@@ -28,7 +28,7 @@ public class CarSearchConditionDto {
 
         if(startDate != null && endDate != null){
             spDate = LocalDateTime.parse(this.startDate, dateTimeFormatter);
-            epDate = LocalDateTime.parse(this.startDate, dateTimeFormatter);
+            epDate = LocalDateTime.parse(this.endDate, dateTimeFormatter);
         }
 
         condition.setCarName(carName);

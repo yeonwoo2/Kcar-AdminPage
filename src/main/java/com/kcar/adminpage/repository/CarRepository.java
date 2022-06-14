@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.springframework.util.StringUtils.hasText;
@@ -83,13 +84,12 @@ public class CarRepository {
         }
 
         if (condition.getStartPrice() != null && condition.getEndPrice() != null) {
-            builder.and(car.purchaseCost.carPrice.in(condition.getStartPrice(), condition.getEndPrice())); //차량 가격 조건
+            builder.and(car.purchaseCost.carPrice.between(condition.getStartPrice(), condition.getEndPrice())); //차량 가격 조건
         }
 
         if (condition.getStartDate() != null && condition.getEndDate() != null) {
-            builder.and(car.registrationDate.in(condition.getStartDate(), condition.getEndDate())); //날짜 조건
+            builder.and(car.registrationDate.between(condition.getStartDate(), condition.getEndDate())); //날짜 조건
         }
-
 
         return queryFactory
                 .selectFrom(car)

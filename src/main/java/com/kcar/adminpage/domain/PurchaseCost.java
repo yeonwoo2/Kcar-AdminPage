@@ -15,14 +15,14 @@ public class PurchaseCost {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int carPrice; // 가격
+    private Integer carPrice; // 가격
 
-    private int registrationFee;
+    private Integer registrationFee;
 
-    private int managementCost;
+    private Integer managementCost;
 
     //==생성 메서드==//
-    public static PurchaseCost createCost(int carPrice, int registrationFee, int managementCost){
+    public static PurchaseCost createCost(Integer carPrice, Integer registrationFee, Integer managementCost){
         PurchaseCost purchaseCost = new PurchaseCost();
         purchaseCost.carPrice = carPrice;
         purchaseCost.registrationFee = registrationFee;

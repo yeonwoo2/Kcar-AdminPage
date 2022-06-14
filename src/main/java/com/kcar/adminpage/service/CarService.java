@@ -124,7 +124,6 @@ public class CarService {
 
     public List<CarDto.GetInfo> findByCarCondition(CarSearchConditionDto condition){
         CarSearchCondition carSearchCondition = condition.toSearchCondition();
-//        List<Car> all = carRepository.findAllWithCategoryAndAssessor();
         List<Car> bySearchCondition = carRepository.findBySearchCondition(carSearchCondition);
         return bySearchCondition.stream().map(c -> new CarDto.GetInfo(c.getId(),
                             c.getSalesStatus(),
