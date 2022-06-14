@@ -12,13 +12,8 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class InspectionRecord {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @MapsId
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    private Car car;
 
     private int sheetMetal; //판금
 
@@ -29,9 +24,8 @@ public class InspectionRecord {
     private int detailedCondition; // 세부상태
 
     //생성자 메서드//
-    public static InspectionRecord createInspection (Car car, int sheetMetal, int exchange, boolean useChange, int detailedCondition){
+    public static InspectionRecord createInspection (int sheetMetal, int exchange, boolean useChange, int detailedCondition){
         InspectionRecord inspectionRecord = new InspectionRecord();
-        inspectionRecord.car = car;
         inspectionRecord.sheetMetal = sheetMetal;
         inspectionRecord.exchange = exchange;
         inspectionRecord.useChange = useChange;

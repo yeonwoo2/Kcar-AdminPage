@@ -12,13 +12,8 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class InsuranceHistory {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @MapsId
-    @OneToOne
-    @JoinColumn(name = "id")
-    private Car car;
 
     private int damageMyCar;
 
@@ -29,9 +24,8 @@ public class InsuranceHistory {
     private boolean specialAccidentHistory; //enum? 있음 없음
 
     //==생성 메서드==//
-    public static InsuranceHistory createInsurance(Car car, int damageMyCar, int relativeDamage, boolean useChangeHistory, boolean specialAccidentHistory){
+    public static InsuranceHistory createInsurance(int damageMyCar, int relativeDamage, boolean useChangeHistory, boolean specialAccidentHistory){
         InsuranceHistory insuranceHistory = new InsuranceHistory();
-        insuranceHistory.car = car;
         insuranceHistory.damageMyCar = damageMyCar;
         insuranceHistory.relativeDamage = relativeDamage;
         insuranceHistory.useChangeHistory = useChangeHistory;

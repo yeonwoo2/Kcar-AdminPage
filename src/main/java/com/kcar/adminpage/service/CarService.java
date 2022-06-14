@@ -2,7 +2,9 @@ package com.kcar.adminpage.service;
 
 import com.kcar.adminpage.domain.*;
 import com.kcar.adminpage.domain.enums.SalesStatus;
-import com.kcar.adminpage.dto.CarDto;
+import com.kcar.adminpage.dto.cardto.CarDto;
+import com.kcar.adminpage.dto.cardto.CarSearchConditionDto;
+import com.kcar.adminpage.dto.cardto.CarStatusInfoDto;
 import com.kcar.adminpage.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,22 @@ public class CarService {
         Category category = categoryRepository.findByName(info.getCategoryName());// 단건 조회
         Assessor assessor = assessorRepository.findByEmployeeNumber(info.getAssessorEmployeeNumber());//단건 조회
 
+        //차량 가격 생성
+        PurchaseCost purchaseCost = PurchaseCost.createCost(info.getPurchaseCost().getCarPrice(),
+                info.getPurchaseCost().getRegistrationFee(),
+                info.getPurchaseCost().getManagementCost());
+
+        InspectionRecord inspectionRecord = InspectionRecord.createInspection(info.getInspectionRecord().getSheetMetal(),
+                info.getInspectionRecord().getExchange(),
+                info.getInspectionRecord().isUseChange(),
+                info.getInspectionRecord().getDetailedCondition());
+
+        //보험이력 생성
+        InsuranceHistory insuranceHistory = InsuranceHistory.createInsurance(info.getInsuranceHistory().getDamageMyCar(),
+                info.getInsuranceHistory().getRelativeDamage(),
+                info.getInsuranceHistory().isUseChangeHistory(),
+                info.getInsuranceHistory().isSpecialAccidentHistory());
+
 
         Car car = Car.createCar(info.getName(),
                                 info.getCarNumber(),
@@ -50,26 +68,14 @@ public class CarService {
                                 info.getStockQuantity(),
                                 info.getSalesStatus(),
                                 category,
-                                assessor);
+                                assessor,
+                                purchaseCost,
+                                inspectionRecord,
+                                insuranceHistory);
 
-        //차량 가격 생성
-        PurchaseCost purchaseCost = PurchaseCost.createCost(car, info.getPurchaseCost().getCarPrice(),
-                                                                 info.getPurchaseCost().getRegistrationFee(),
-                                                                 info.getPurchaseCost().getManagementCost());
-        //보험이력 생성
-        InsuranceHistory insuranceHistory = InsuranceHistory.createInsurance(car, info.getInsuranceHistory().getDamageMyCar(),
-                                                                                  info.getInsuranceHistory().getRelativeDamage(),
-                                                                                  info.getInsuranceHistory().isUseChangeHistory(),
-                                                                                  info.getInsuranceHistory().isSpecialAccidentHistory());
-
-        InspectionRecord inspectionRecord = InspectionRecord.createInspection(car, info.getInspectionRecord().getSheetMetal(),
-                                                                                   info.getInspectionRecord().getExchange(),
-                                                                                   info.getInspectionRecord().isUseChange(),
-                                                                                   info.getInspectionRecord().getDetailedCondition());
-
+        purchaseCostRepository.save(purchaseCost);
         inspectionRecordRepository.save(inspectionRecord);
         insuranceHistoryRepository.save(insuranceHistory);
-        purchaseCostRepository.save(purchaseCost);
         carRepository.save(car);
     }
 
@@ -108,16 +114,52 @@ public class CarService {
                 .collect(Collectors.toList());
     }
 
+    public CarStatusInfoDto findCarBySaleStatus(){
+        List<Car> all = carRepository.findAll();
+        List<Car> onSale = carRepository.findBySalesStatus(SalesStatus.ON);
+        List<Car> readySale = carRepository.findBySalesStatus(SalesStatus.READY);
+        List<Car> stopSale = carRepository.findBySalesStatus(SalesStatus.STOP);
+        return new CarStatusInfoDto(all.size(), readySale.size(), onSale.size(), stopSale.size());
+    }
+
+    public List<CarDto.GetInfo> findByCarCondition(CarSearchConditionDto condition){
+        CarSearchCondition carSearchCondition = condition.toSearchCondition();
+//        List<Car> all = carRepository.findAllWithCategoryAndAssessor();
+        List<Car> bySearchCondition = carRepository.findBySearchCondition(carSearchCondition);
+        return bySearchCondition.stream().map(c -> new CarDto.GetInfo(c.getId(),
+                            c.getSalesStatus(),
+                            c.getImportStatus(),
+                            c.getName(),
+                            c.getCarNumber(),
+                            c.getVehicleType(),
+                            c.getSeater(),
+                            c.getModelYear(),
+                            c.getMileage(),
+                            c.getColor(),
+                            c.getFuel(),
+                            c.getManufacturer(),
+                            c.getModel(),
+                            c.getDetailModel(),
+                            c.getTransmission(),
+                            c.isAccident(),
+                            c.getDriveType(),
+                            c.getCategories().getName(),
+                            c.getAssessor().getName(),
+                            c.getAssessor().getDirectShop(),
+                            c.getStockQuantity(),
+                            c.getRegistrationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))))
+                            .collect(Collectors.toList());
+    }
+
     @Transactional
     public void deleteCar(Long id) {
         Car car = carRepository.findOne(id);
         if(!car.getSalesStatus().equals(SalesStatus.STOP)){
-            throw new IllegalStateException("판매중지된 상품이 아닙니다.");
+            throw new IllegalStateException("판매중인 상품입니다.");
         }
 
         inspectionRecordRepository.delete(id); //연관관계 제거
         insuranceHistoryRepository.delete(id); //연관관계 제거
-        purchaseCostRepository.delete(id); //연관관계 제거
         carRepository.delete(car); //차량제거
     }
 }

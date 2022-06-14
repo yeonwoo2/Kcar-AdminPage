@@ -64,6 +64,18 @@ public class Car {
     @JoinColumn(name = "assessor_id")
     private Assessor assessor;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "purchase_cost")
+    private PurchaseCost purchaseCost;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "inspection_record")
+    private InspectionRecord inspectionRecord;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "insurance_history")
+    private InsuranceHistory insuranceHistory;
+
     @CreatedDate
     private LocalDateTime registrationDate;
 
@@ -95,7 +107,10 @@ public class Car {
                                 int stockQuantity,
                                 SalesStatus salesStatus,
                                 Category categories,
-                                Assessor assessor){
+                                Assessor assessor,
+                                PurchaseCost purchaseCost,
+                                InspectionRecord inspectionRecord,
+                                InsuranceHistory insuranceHistory){
         Car car = new Car();
         car.name = name;
         car.carNumber = carNumber;
@@ -117,6 +132,9 @@ public class Car {
         car.salesStatus = salesStatus;
         car.categories = categories;
         car.assessor = assessor;
+        car.purchaseCost = purchaseCost;
+        car.inspectionRecord = inspectionRecord;
+        car.insuranceHistory = insuranceHistory;
 
         return car;
     }

@@ -1,6 +1,9 @@
-package com.kcar.adminpage.dto;
+package com.kcar.adminpage.dto.cardto;
 
 import com.kcar.adminpage.domain.enums.SalesStatus;
+import com.kcar.adminpage.dto.InspectionRecordDto;
+import com.kcar.adminpage.dto.InsuranceHistoryDto;
+import com.kcar.adminpage.dto.PurchaseCostDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

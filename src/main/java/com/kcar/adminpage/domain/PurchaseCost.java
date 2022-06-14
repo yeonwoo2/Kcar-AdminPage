@@ -8,17 +8,12 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PurchaseCost {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @MapsId
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    private Car car;
 
     private int carPrice; // 가격
 
@@ -27,9 +22,8 @@ public class PurchaseCost {
     private int managementCost;
 
     //==생성 메서드==//
-    public static PurchaseCost createCost(Car car, int carPrice, int registrationFee, int managementCost){
+    public static PurchaseCost createCost(int carPrice, int registrationFee, int managementCost){
         PurchaseCost purchaseCost = new PurchaseCost();
-        purchaseCost.car = car;
         purchaseCost.carPrice = carPrice;
         purchaseCost.registrationFee = registrationFee;
         purchaseCost.managementCost = managementCost;

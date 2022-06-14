@@ -1,14 +1,18 @@
 package com.kcar.adminpage.repository;
 
 import com.kcar.adminpage.domain.Car;
-import com.kcar.adminpage.domain.OrderCar;
+import com.kcar.adminpage.domain.QCar;
+import com.kcar.adminpage.domain.QPurchaseCost;
 import com.kcar.adminpage.domain.enums.SalesStatus;
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDateTime;
 import java.util.List;
+
+import static org.springframework.util.StringUtils.hasText;
 
 @Repository
 @RequiredArgsConstructor
@@ -58,4 +62,48 @@ public class CarRepository {
     public void delete(Car car) {
         em.remove(car);
     }
+
+    //동적쿼리 생성
+    public List<Car> findBySearchCondition(CarSearchCondition condition){
+
+        BooleanBuilder builder = new BooleanBuilder();
+        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+        QCar car = QCar.car;
+
+        if (hasText(condition.getCarName())) {
+            builder.and(car.name.contains(condition.getCarName())); // 차량 이름 조건
+        }
+
+        if (condition.getSaleStatus() != null) {
+            builder.and(car.salesStatus.eq(condition.getSaleStatus())); //판매상태 조건
+        }
+
+        if (hasText(condition.getCategory())) {
+            builder.and(car.categories.name.eq(condition.getCategory())); //카테고리이름 조건
+        }
+
+        if (condition.getStartPrice() != null && condition.getEndPrice() != null) {
+            builder.and(car.purchaseCost.carPrice.in(condition.getStartPrice(), condition.getEndPrice())); //차량 가격 조건
+        }
+
+        if (condition.getStartDate() != null && condition.getEndDate() != null) {
+            builder.and(car.registrationDate.in(condition.getStartDate(), condition.getEndDate())); //날짜 조건
+        }
+
+
+        return queryFactory
+                .selectFrom(car)
+                .leftJoin(car.purchaseCost)
+                .fetchJoin()
+                .leftJoin(car.categories)
+                .fetchJoin()
+                .leftJoin(car.assessor)
+                .fetchJoin()
+                .where(builder)
+                .fetch();
+
+    }
+
+
+
 }
