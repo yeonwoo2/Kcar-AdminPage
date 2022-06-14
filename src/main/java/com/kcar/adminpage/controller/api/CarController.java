@@ -1,5 +1,6 @@
 package com.kcar.adminpage.controller.api;
 
+import com.kcar.adminpage.dto.IdDto;
 import com.kcar.adminpage.dto.cardto.CarDto;
 import com.kcar.adminpage.dto.Result;
 import com.kcar.adminpage.dto.cardto.CarSearchConditionDto;
@@ -50,8 +51,9 @@ public class CarController {
         carService.updateCar(id, request);
     }
 
-    @DeleteMapping("/api/cars/{id}")
-    public void deleteCar(@PathVariable("id") Long id) {
+    @DeleteMapping("/api/cars")
+    public void deleteCar(@RequestBody IdDto id) {
         carService.deleteCar(id);
     }
 }
+

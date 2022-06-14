@@ -32,4 +32,11 @@ public class PurchaseCostRepository {
                 .getResultList();
     }
 
+    //벌크연산
+    public void deleteByIdIn(List<Long> cars) {
+        em.createQuery("delete from PurchaseCost p where p.id in :cars")
+                .setParameter("cars", cars)
+                .executeUpdate();
+    }
+
 }

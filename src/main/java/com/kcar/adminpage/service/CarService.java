@@ -2,6 +2,7 @@ package com.kcar.adminpage.service;
 
 import com.kcar.adminpage.domain.*;
 import com.kcar.adminpage.domain.enums.SalesStatus;
+import com.kcar.adminpage.dto.IdDto;
 import com.kcar.adminpage.dto.cardto.CarDto;
 import com.kcar.adminpage.dto.cardto.CarSearchConditionDto;
 import com.kcar.adminpage.dto.cardto.CarStatusInfoDto;
@@ -25,6 +26,7 @@ public class CarService {
     private final PurchaseCostRepository purchaseCostRepository;
     private final InsuranceHistoryRepository insuranceHistoryRepository;
     private final InspectionRecordRepository inspectionRecordRepository;
+    private final OrderCarRepository orderCarRepository;
 
     @Transactional // 차량 등록
     public void saveCar(CarDto.PostInfo info){
@@ -123,14 +125,10 @@ public class CarService {
     }
 
     @Transactional
-    public void deleteCar(Long id) {
-        Car car = carRepository.findOne(id);
-        if(!car.getSalesStatus().equals(SalesStatus.STOP)){
-            throw new IllegalStateException("판매중인 상품입니다.");
-        }
-
-        inspectionRecordRepository.delete(id); //연관관계 제거
-        insuranceHistoryRepository.delete(id); //연관관계 제거
-        carRepository.delete(car); //차량제거
+    public void deleteCar(IdDto id) {
+        carRepository.deleteByCarIdIn(id.getId()); //차량제거
+        inspectionRecordRepository.deleteByIdIn(id.getId()); //연관관계 제거
+        insuranceHistoryRepository.deleteByIdIn(id.getId()); //연관관계 제거
+        purchaseCostRepository.deleteByIdIn(id.getId()); //연관관계 제거
     }
 }

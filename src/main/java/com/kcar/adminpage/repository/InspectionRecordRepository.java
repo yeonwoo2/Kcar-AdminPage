@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -23,5 +24,12 @@ public class InspectionRecordRepository {
     public void delete(Long id) {
         InspectionRecord inspectionRecord = em.find(InspectionRecord.class, id);
         em.remove(inspectionRecord);
+    }
+
+    //벌크연산
+    public void deleteByIdIn(List<Long> cars) {
+        em.createQuery("delete from InspectionRecord i where i.id in :cars")
+                .setParameter("cars", cars)
+                .executeUpdate();
     }
 }

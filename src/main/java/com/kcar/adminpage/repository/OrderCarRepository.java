@@ -1,9 +1,7 @@
 package com.kcar.adminpage.repository;
 
-import com.kcar.adminpage.domain.Car;
 import com.kcar.adminpage.domain.OrderCar;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

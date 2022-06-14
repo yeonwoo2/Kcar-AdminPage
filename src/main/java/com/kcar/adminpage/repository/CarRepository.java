@@ -63,6 +63,13 @@ public class CarRepository {
         em.remove(car);
     }
 
+    //벌크연산
+    public void deleteByCarIdIn(List<Long> cars) {
+        em.createQuery("delete from Car c where c.id in :cars")
+                .setParameter("cars", cars)
+                .executeUpdate();
+    }
+
     //동적쿼리 생성
     public List<Car> findBySearchCondition(CarSearchCondition condition){
 
