@@ -27,6 +27,18 @@ public class CarController {
         return new Result(allCarInfo.size(), allCarInfo);
     }
 
+//    @GetMapping("/api/cars") //삭제
+//    public Result carList(@RequestBody CarSearchConditionDto conditionDto) {
+//        List<CarDto.GetInfo> allCarInfo = carService.findByCarCondition(conditionDto);
+//        return new Result(allCarInfo.size(), allCarInfo);
+//    }
+//
+//    @GetMapping("/api/cars") //수정항목 저장
+//    public Result carList(@RequestBody CarSearchConditionDto conditionDto) {
+//        List<CarDto.GetInfo> allCarInfo = carService.findByCarCondition(conditionDto);
+//        return new Result(allCarInfo.size(), allCarInfo);
+//    }
+
     @PostMapping("/api/car-save") //차량 등록 -> return httpResponse... 작업요함
     public void carSave(@RequestBody CarDto.PostInfo info) {
         carService.saveCar(info);

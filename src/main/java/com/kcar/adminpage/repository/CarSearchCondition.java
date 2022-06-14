@@ -16,4 +16,6 @@ public class CarSearchCondition {
     private Integer endPrice;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+    private String OrderByFilter; //DESC ASC
+    private int paging;// 페이징
 }

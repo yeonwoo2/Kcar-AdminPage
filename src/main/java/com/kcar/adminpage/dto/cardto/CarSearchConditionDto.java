@@ -19,6 +19,9 @@ public class CarSearchConditionDto {
     private String startDate;
     private String endDate;
 
+    private String orderByFilter; //DESC ASC
+    private int paging;// 페이징
+
     public CarSearchCondition toSearchCondition () {
         CarSearchCondition condition = new CarSearchCondition();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -38,6 +41,8 @@ public class CarSearchConditionDto {
         condition.setEndPrice(endPrice);
         condition.setStartDate(spDate);
         condition.setEndDate(epDate);
+        condition.setOrderByFilter(orderByFilter);
+        condition.setPaging(paging);
         return condition;
     }
 }

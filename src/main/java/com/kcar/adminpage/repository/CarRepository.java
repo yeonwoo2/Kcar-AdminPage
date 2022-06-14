@@ -2,15 +2,14 @@ package com.kcar.adminpage.repository;
 
 import com.kcar.adminpage.domain.Car;
 import com.kcar.adminpage.domain.QCar;
-import com.kcar.adminpage.domain.QPurchaseCost;
 import com.kcar.adminpage.domain.enums.SalesStatus;
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.springframework.util.StringUtils.hasText;
@@ -91,8 +90,20 @@ public class CarRepository {
             builder.and(car.registrationDate.between(condition.getStartDate(), condition.getEndDate())); //날짜 조건
         }
 
-        return queryFactory
-                .selectFrom(car)
+        JPAQuery<Car> query = queryFactory.selectFrom(car);
+
+        if(condition.getOrderByFilter() != null && condition.getOrderByFilter().equals("상품등록순")){
+            query.orderBy(car.registrationDate.desc());
+        }else if(condition.getOrderByFilter() != null && condition.getOrderByFilter().equals("상품수정일순")){
+            query.orderBy(car.modifiedDate.desc());
+        }else if(condition.getOrderByFilter() != null && condition.getOrderByFilter().equals("판매가낮은순")) {
+            query.orderBy(car.purchaseCost.carPrice.asc());
+        }else if(condition.getOrderByFilter() != null && condition.getOrderByFilter().equals("판매가높은순")){
+            query.orderBy(car.purchaseCost.carPrice.desc());
+        }
+
+
+        return query
                 .leftJoin(car.purchaseCost)
                 .fetchJoin()
                 .leftJoin(car.categories)
@@ -100,10 +111,10 @@ public class CarRepository {
                 .leftJoin(car.assessor)
                 .fetchJoin()
                 .where(builder)
+                .offset(0)
+                .limit(condition.getPaging()) //0보다 큰 값이 반드시 들어옴
                 .fetch();
-
     }
-
 
 
 }

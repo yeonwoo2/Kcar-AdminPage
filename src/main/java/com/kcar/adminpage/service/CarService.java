@@ -85,35 +85,6 @@ public class CarService {
         findCar.changeCarInfo(updateInfo.getSalesStatus(), updateInfo.getStockQuantity());
     }
 
-    //모든차량 검색
-    public List<CarDto.GetInfo> findAllCarInfo(){
-        List<Car> carList = carRepository.findAllWithCategoryAndAssessor();
-        return carList.stream()
-                .map(c -> new CarDto.GetInfo(c.getId(),
-                                                    c.getSalesStatus(),
-                                                    c.getImportStatus(),
-                                                    c.getName(),
-                                                    c.getCarNumber(),
-                                                    c.getVehicleType(),
-                                                    c.getSeater(),
-                                                    c.getModelYear(),
-                                                    c.getMileage(),
-                                                    c.getColor(),
-                                                    c.getFuel(),
-                                                    c.getManufacturer(),
-                                                    c.getModel(),
-                                                    c.getDetailModel(),
-                                                    c.getTransmission(),
-                                                    c.isAccident(),
-                                                    c.getDriveType(),
-                                                    c.getCategories().getName(),
-                                                    c.getAssessor().getName(),
-                                                    c.getAssessor().getDirectShop(),
-                                                    c.getStockQuantity(),
-                                                    c.getRegistrationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))))
-                .collect(Collectors.toList());
-    }
-
     public CarStatusInfoDto findCarBySaleStatus(){
         List<Car> all = carRepository.findAll();
         List<Car> onSale = carRepository.findBySalesStatus(SalesStatus.ON);
@@ -122,6 +93,7 @@ public class CarService {
         return new CarStatusInfoDto(all.size(), readySale.size(), onSale.size(), stopSale.size());
     }
 
+    //필터검색
     public List<CarDto.GetInfo> findByCarCondition(CarSearchConditionDto condition){
         CarSearchCondition carSearchCondition = condition.toSearchCondition();
         List<Car> bySearchCondition = carRepository.findBySearchCondition(carSearchCondition);

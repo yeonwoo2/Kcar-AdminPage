@@ -60,13 +60,13 @@ public class HomeService {
 
         List<Car> orderByDate = carRepository.findOrderByDate();
         List<RecentCreateCarDto> recentCreateCarDtoList = orderByDate.stream().
-                map(c -> new RecentCreateCarDto(c.getImportStatus(), c.getName(), c.getRegistrationDate().format(DateTimeFormatter.ofPattern("yyyy.MM-dd HH:mm"))))
+                map(c -> new RecentCreateCarDto(c.getImportStatus(), c.getName(), c.getRegistrationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))))
                 .collect(Collectors.toList());
 
         List<Review> allReview = reviewRepository.findAll(); //총 후기수
         List<Review> todayReviewList = reviewRepository.findByDate(dateParser.startDate(), dateParser.endDate()); //오늘 작성된 후기
         List<Review> reviewByRecentDate = reviewRepository.findReviewByRecentDate();
-        List<RecentReviewListDto> reviewListDto = reviewByRecentDate.stream().map(r -> new RecentReviewListDto(r.getId(), r.getTitle(), r.getCreateDate().format(DateTimeFormatter.ofPattern("yyyy.MM-dd HH:mm"))))
+        List<RecentReviewListDto> reviewListDto = reviewByRecentDate.stream().map(r -> new RecentReviewListDto(r.getId(), r.getTitle(), r.getCreateDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))))
                 .collect(Collectors.toList());
 
         List<User> allUser = userRepository.findAll();
