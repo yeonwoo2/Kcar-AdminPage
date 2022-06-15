@@ -1,7 +1,8 @@
 package com.kcar.adminpage.service;
 
 import com.kcar.adminpage.domain.User;
-import com.kcar.adminpage.dto.UserDto;
+import com.kcar.adminpage.dto.userdto.UserConditionDto;
+import com.kcar.adminpage.dto.userdto.UserDto;
 import com.kcar.adminpage.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,8 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public List<UserDto.GetInfo> findAllUser() {
-        List<User> users = userRepository.findAll();
+    public List<UserDto.GetInfo> findAllUser(UserConditionDto conditionDto) {
+        List<User> users = userRepository.findBySearchCondition(conditionDto);
         return users.stream()
                 .map(u -> new UserDto.GetInfo(u.getId(),
                         u.getName(),
@@ -28,8 +29,11 @@ public class UserService {
     }
 
     @Transactional
-    public void updateUserAuth(Long id, UserDto.UpdateInfo request) {
-        User user = userRepository.findOne(id);
-        user.changeUserAuth(request.getAuthority());
+    public void updateUserAuth(UserDto.UpdateInfo request) {
+        if(request.getId() != null){
+            Long id = Long.parseLong(request.getId());
+            User user = userRepository.findOne(id);
+            user.changeUserAuth(request.getAuthority());
+        }
     }
 }

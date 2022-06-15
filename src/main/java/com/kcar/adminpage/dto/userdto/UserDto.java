@@ -1,4 +1,4 @@
-package com.kcar.adminpage.dto;
+package com.kcar.adminpage.dto.userdto;
 
 import com.kcar.adminpage.domain.enums.Authority;
 import lombok.AllArgsConstructor;
@@ -20,6 +20,7 @@ public class UserDto {
 
     @Getter @Setter
     public static class UpdateInfo {
+        private String id;
         private Authority authority;
     }
 }
