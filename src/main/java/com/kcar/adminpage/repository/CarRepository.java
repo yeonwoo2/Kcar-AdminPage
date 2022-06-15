@@ -3,6 +3,7 @@ package com.kcar.adminpage.repository;
 import com.kcar.adminpage.domain.Car;
 import com.kcar.adminpage.domain.QCar;
 import com.kcar.adminpage.domain.enums.SalesStatus;
+import com.kcar.adminpage.repository.condition.CarSearchCondition;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;

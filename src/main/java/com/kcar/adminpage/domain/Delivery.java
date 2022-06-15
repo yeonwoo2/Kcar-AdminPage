@@ -1,7 +1,6 @@
 package com.kcar.adminpage.domain;
 
 import com.kcar.adminpage.domain.enums.DeliveryStatus;
-import com.kcar.adminpage.domain.enums.SalesStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,12 +29,12 @@ public class Delivery {
     @Embedded
     private Address address;
 
-    private String hopeDeliveryDate; //희망 배송일
-
     @Enumerated(EnumType.STRING)
     private DeliveryStatus deliveryStatus; // 수정시 배송 완료 찍힘
 
     private String deliveryCompleteDate; //배송 완료 날짜
+
+    private LocalDateTime hopeDeliveryDate; //희망 배송일
 
     @LastModifiedDate
     private LocalDateTime modifiedDate; // 업데이트 시간
@@ -43,12 +42,9 @@ public class Delivery {
     @CreatedDate
     private LocalDateTime createDate;
 
-    public void changeDeliveryInfo(String receiver, String number, Address address, DeliveryStatus deliveryStatus, String hopeDate){
+    public void changeDeliveryInfo(String receiver, DeliveryStatus deliveryStatus){
         this.receiver = receiver;
-        this.number = number;
-        this.address = address;
         this.deliveryStatus = deliveryStatus;
-        this.deliveryCompleteDate = hopeDate;
     }
 
 }

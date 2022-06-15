@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotEmpty;
+
 public class CarDto {
 
     @Getter
@@ -40,7 +42,10 @@ public class CarDto {
 
     @Getter @Setter
     public static class PostInfo{
+
+        @NotEmpty(message = "차량명을 입력해주세요")
         private String name;
+        @NotEmpty(message = "차량번호를 입력해주세요")
         private String carNumber;
         private String vehicleType;
         private String seater;
@@ -59,6 +64,8 @@ public class CarDto {
         private int stockQuantity;
         private SalesStatus salesStatus; // READY, ON, STOP
         private String categoryName; //카테고리 이름
+
+        @NotEmpty(message = "사번을 입력해주세요")
         private String assessorEmployeeNumber; //사번
         private PurchaseCostDto purchaseCost; // 가격정보
         private InspectionRecordDto inspectionRecord; // 성능.상태점검기록

@@ -7,6 +7,7 @@ import com.kcar.adminpage.dto.cardto.CarDto;
 import com.kcar.adminpage.dto.cardto.CarSearchConditionDto;
 import com.kcar.adminpage.dto.cardto.CarStatusInfoDto;
 import com.kcar.adminpage.repository.*;
+import com.kcar.adminpage.repository.condition.CarSearchCondition;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

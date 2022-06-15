@@ -1,4 +1,4 @@
-package com.kcar.adminpage.repository;
+package com.kcar.adminpage.repository.condition;
 
 import com.kcar.adminpage.domain.enums.SalesStatus;
 import lombok.Getter;

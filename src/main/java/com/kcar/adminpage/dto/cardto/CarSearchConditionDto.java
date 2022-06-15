@@ -1,7 +1,7 @@
 package com.kcar.adminpage.dto.cardto;
 
 import com.kcar.adminpage.domain.enums.SalesStatus;
-import com.kcar.adminpage.repository.CarSearchCondition;
+import com.kcar.adminpage.repository.condition.CarSearchCondition;
 import lombok.Getter;
 import lombok.Setter;
 

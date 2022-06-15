@@ -1,5 +1,6 @@
 package com.kcar.adminpage.domain;
 
+import com.kcar.adminpage.domain.enums.OrderStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,12 +20,12 @@ public class OrderCar {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Enumerated(EnumType.STRING)
-    private String orderStatus;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
 
     private LocalDateTime deadlinePaymentDate; // 주문등록시 +3일 추가해서 넣기 자동입력 될까?
 
-    private String paymentDate; // 결제일 -> comp 수정시 등록
+    private LocalDateTime paymentDate; // 결제일 -> comp 수정시 등록
 
     @CreatedDate
     private LocalDateTime orderDate; // 주문일
@@ -38,7 +39,7 @@ public class OrderCar {
     private Car car;
 
     //생성자 메서드//
-    public static OrderCar createOrderCar(String orderStatus, OrderForm orderForm, Car car){
+    public static OrderCar createOrderCar(OrderStatus orderStatus, OrderForm orderForm, Car car){
         OrderCar orderCar = new OrderCar();
         orderCar.orderStatus = orderStatus;
         orderCar.orderForm = orderForm;

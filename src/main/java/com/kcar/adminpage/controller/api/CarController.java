@@ -7,6 +7,7 @@ import com.kcar.adminpage.dto.cardto.CarSearchConditionDto;
 import com.kcar.adminpage.dto.cardto.CarStatusInfoDto;
 import com.kcar.adminpage.service.CarService;
 import lombok.*;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,31 +29,14 @@ public class CarController {
         return new Result(allCarInfo.size(), allCarInfo);
     }
 
-//    @GetMapping("/api/cars") //삭제
-//    public Result carList(@RequestBody CarSearchConditionDto conditionDto) {
-//        List<CarDto.GetInfo> allCarInfo = carService.findByCarCondition(conditionDto);
-//        return new Result(allCarInfo.size(), allCarInfo);
-//    }
-//
-//    @GetMapping("/api/cars") //수정항목 저장
-//    public Result carList(@RequestBody CarSearchConditionDto conditionDto) {
-//        List<CarDto.GetInfo> allCarInfo = carService.findByCarCondition(conditionDto);
-//        return new Result(allCarInfo.size(), allCarInfo);
-//    }
-
     @PostMapping("/api/car-save") //차량 등록 -> return httpResponse... 작업요함
-    public void carSave(@RequestBody CarDto.PostInfo info) {
+    public void carSave(@Validated @RequestBody CarDto.PostInfo info) {
         carService.saveCar(info);
-    }
 
-    @PutMapping("/api/cars/{id}") //차량 정보 업데이트 -> return httpResponse... 작업요함
-    public void updateCarInfo(@PathVariable("id") Long id,
-                              @RequestBody CarDto.UpdateInfo request) {
-        carService.updateCar(id, request);
     }
 
     //선택삭제
-    @DeleteMapping("/api/cars")
+    @DeleteMapping("/api/cars-delete")
     public void deleteCar(@RequestBody IdDto id) {
         carService.deleteCar(id);
     }

@@ -1,4 +1,4 @@
-package com.kcar.adminpage.dto;
+package com.kcar.adminpage.dto.delivery;
 
 import com.kcar.adminpage.domain.Address;
 import com.kcar.adminpage.domain.enums.DeliveryStatus;
@@ -27,10 +27,8 @@ public class DeliveryDto {
     @Setter
     @AllArgsConstructor
     public static class UpdateInfo {
+        private String id;
         private String receiver;
-        private String PhoneNumber;
         private DeliveryStatus deliveryStatus;
-        private String hopeDate;
-        private Address address;
     }
 }
