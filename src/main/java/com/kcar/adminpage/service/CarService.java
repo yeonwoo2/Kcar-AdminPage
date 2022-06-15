@@ -126,6 +126,7 @@ public class CarService {
 
     @Transactional
     public void deleteCar(IdDto id) {
+        orderCarRepository.deleteAllWithCheckCar(id.getId());
         carRepository.deleteByCarIdIn(id.getId()); //차량제거
         inspectionRecordRepository.deleteByIdIn(id.getId()); //연관관계 제거
         insuranceHistoryRepository.deleteByIdIn(id.getId()); //연관관계 제거

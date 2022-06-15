@@ -1,6 +1,10 @@
 package com.kcar.adminpage.repository;
 
 import com.kcar.adminpage.domain.OrderCar;
+import com.kcar.adminpage.domain.QCar;
+import com.kcar.adminpage.domain.QOrderCar;
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -53,4 +57,13 @@ public class OrderCarRepository {
                 .getResultList();
     }
 
+    public void deleteAllWithCheckCar(List<Long> cars){
+        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+        QOrderCar orderCar = QOrderCar.orderCar;
+
+        queryFactory
+                .delete(orderCar)
+                .where(orderCar.car.id.in(cars))
+                .execute();
+    }
 }

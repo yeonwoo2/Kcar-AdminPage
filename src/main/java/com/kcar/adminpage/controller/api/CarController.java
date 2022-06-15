@@ -51,6 +51,7 @@ public class CarController {
         carService.updateCar(id, request);
     }
 
+    //선택삭제
     @DeleteMapping("/api/cars")
     public void deleteCar(@RequestBody IdDto id) {
         carService.deleteCar(id);

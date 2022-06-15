@@ -59,10 +59,6 @@ public class CarRepository {
                 .getResultList();
     }
 
-    public void delete(Car car) {
-        em.remove(car);
-    }
-
     //벌크연산
     public void deleteByCarIdIn(List<Long> cars) {
         em.createQuery("delete from Car c where c.id in :cars")
