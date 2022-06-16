@@ -28,7 +28,6 @@ public class CarService {
     private final PurchaseCostRepository purchaseCostRepository;
     private final InsuranceHistoryRepository insuranceHistoryRepository;
     private final InspectionRecordRepository inspectionRecordRepository;
-    private final OrderCarRepository orderCarRepository;
 
     @Transactional // 차량 등록
     public void saveCar(CarDto.PostInfo info){
@@ -106,6 +105,7 @@ public class CarService {
 
     //필터검색
     public List<CarDto.GetInfo> findByCarCondition(CarSearchConditionDto condition){
+        System.out.println("============= " + condition.getCarName());
         CarSearchCondition carSearchCondition = condition.toSearchCondition();
         List<Car> bySearchCondition = carRepository.findBySearchCondition(carSearchCondition);
         return bySearchCondition.stream().map(c -> new CarDto.GetInfo(c.getId(),
@@ -115,7 +115,6 @@ public class CarService {
                             c.getCarNumber(),
                             c.getVehicleType(),
                             c.getSeater(),
-                            c.getModelYear(),
                             c.getMileage(),
                             c.getColor(),
                             c.getFuel(),
@@ -123,6 +122,7 @@ public class CarService {
                             c.getModel(),
                             c.getDetailModel(),
                             c.getTransmission(),
+                            c.getModelYear(),
                             c.isAccident(),
                             c.getDriveType(),
                             c.getCategories().getName(),

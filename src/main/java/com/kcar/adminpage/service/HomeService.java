@@ -1,10 +1,7 @@
 package com.kcar.adminpage.service;
 
 import com.kcar.adminpage.domain.*;
-import com.kcar.adminpage.domain.enums.AnswerType;
-import com.kcar.adminpage.domain.enums.Authority;
-import com.kcar.adminpage.domain.enums.DeliveryStatus;
-import com.kcar.adminpage.domain.enums.SalesStatus;
+import com.kcar.adminpage.domain.enums.*;
 import com.kcar.adminpage.controller.dto.InquiryClientDto;
 import com.kcar.adminpage.controller.dto.InquiryItemDto;
 import com.kcar.adminpage.controller.dto.InquiryOfferDto;
@@ -38,15 +35,15 @@ public class HomeService {
         List<StatisticsDto> statisticsDtoList = new ArrayList<>();
         List<InquiryOfferDto> inquiryOfferDtoList = new ArrayList<>();
 
-        List<OrderCar> orderWait = orderCarRepository.findByOrderStatus("WAIT");
-        List<OrderCar> orderComp = orderCarRepository.findByOrderStatus("COMP");
-        List<OrderCar> orderCancel = orderCarRepository.findByOrderStatus("CANCEL");
-        List<OrderCar> orderReturn = orderCarRepository.findByOrderStatus("RETURN");
-        List<OrderCar> comp = orderCarRepository.findByOrderCompAndDate("COMP", dateParser.startDate(), dateParser.endDate()); //수정요함
+        List<OrderCar> orderWait = orderCarRepository.findByOrderStatus(OrderStatus.WAIT);
+        List<OrderCar> orderComp = orderCarRepository.findByOrderStatus(OrderStatus.COMP);
+        List<OrderCar> orderCancel = orderCarRepository.findByOrderStatus(OrderStatus.CANCEL);
+        List<OrderCar> orderReturn = orderCarRepository.findByOrderStatus(OrderStatus.RETURN);
+        List<OrderCar> comp = orderCarRepository.findByOrderCompAndDate(OrderStatus.COMP, dateParser.startDate(), dateParser.endDate()); //수정요함
 
         //이거 맞아?
         for(int i=0; i<30; i++){
-            List<OrderCar> compOrder = orderCarRepository.findByOrderCompAndDateCount("COMP", dateParser.startDate(), dateParser.endDate(), i);
+            List<OrderCar> compOrder = orderCarRepository.findByOrderCompAndDateCount(OrderStatus.COMP, dateParser.startDate(), dateParser.endDate(), i);
             statisticsDtoList.add(new StatisticsDto(LocalDateTime.now().minusDays(i).format(DateTimeFormatter.ofPattern("MM.dd")), compOrder.size()));
         }
 
@@ -73,19 +70,26 @@ public class HomeService {
         List<User> recentUser = userRepository.findByDate(dateParser.startDate(), dateParser.endDate());
         List<User> normalUser = userRepository.findByAuthority(Authority.USER);
         List<User> subsUser = userRepository.findByAuthority(Authority.SUBS);
+        List<Question> offer = inquiryRepository.findByAnswerType(AnswerType.OFFER);
+        List<Question> item = inquiryRepository.findByAnswerType(AnswerType.ITEM);
+        List<Question> client = inquiryRepository.findByAnswerType(AnswerType.CLIENT);
+
 
         for(int i=0; i<24; i++){
             List<Question> questions = inquiryRepository.findByDateAndAnswerType(AnswerType.OFFER, dateParser.startDate(), i);
             inquiryOfferDtoList.add(new InquiryOfferDto(String.valueOf(i), questions.size()));
         }
 
+
+
         OrderAndDeliveryInfoDto orderAndDeliveryInfoDto = new OrderAndDeliveryInfoDto(orderWait.size(),orderComp.size(), ready.size(), going.size(), deliveryComp.size());
         ClaimAndCalculate claimAndCalculate = new ClaimAndCalculate(orderCancel.size(), orderReturn.size(), comp.size());
         CarInfoDto carInfoDto = new CarInfoDto(onSale.size(), readySale.size(), StopSale.size());
         ReviewDto reviewDto = new ReviewDto(allReview.size(), todayReviewList.size());
         UserCountDto userCountDto = new UserCountDto(allUser.size(), recentUser.size(), normalUser.size(), subsUser.size());
+        InquiryDto inquiryDto = new InquiryDto(offer.size(), item.size(), client.size());
 
-        return new HomeDto(orderAndDeliveryInfoDto, claimAndCalculate, carInfoDto, recentCreateCarDtoList, reviewDto, reviewListDto, userCountDto,statisticsDtoList, inquiryOfferDtoList);
+        return new HomeDto(orderAndDeliveryInfoDto, claimAndCalculate, carInfoDto, recentCreateCarDtoList, reviewDto, reviewListDto, userCountDto, inquiryDto, statisticsDtoList, inquiryOfferDtoList);
     }
 
     public List<InquiryOfferDto> findInquiryOfferInfo(){

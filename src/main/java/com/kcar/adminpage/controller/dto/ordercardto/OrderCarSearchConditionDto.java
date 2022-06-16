@@ -22,7 +22,7 @@ public class OrderCarSearchConditionDto {
     private String orderStartDate;
     private String orderEndDate;
 
-    private int paging;// 페이징
+    private Integer paging;// 페이징
 
     public OrderCarSearchCondition toSearchCondition () {
         OrderCarSearchCondition condition = new OrderCarSearchCondition();

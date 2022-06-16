@@ -17,6 +17,7 @@ public class HomeDto {
     private ReviewDto review;
     private List<RecentReviewListDto> recentReviewList;
     private UserCountDto userInfo;
+    private InquiryDto inquiryDto;
     private List<StatisticsDto> statisticsList;
     private List<InquiryOfferDto> inquiryOffer;
 }

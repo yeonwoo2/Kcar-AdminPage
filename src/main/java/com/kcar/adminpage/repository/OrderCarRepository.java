@@ -4,6 +4,7 @@ import com.kcar.adminpage.domain.Car;
 import com.kcar.adminpage.domain.OrderCar;
 import com.kcar.adminpage.domain.QCar;
 import com.kcar.adminpage.domain.QOrderCar;
+import com.kcar.adminpage.domain.enums.OrderStatus;
 import com.kcar.adminpage.repository.condition.CarSearchCondition;
 import com.kcar.adminpage.repository.condition.OrderCarSearchCondition;
 import com.querydsl.core.BooleanBuilder;
@@ -32,13 +33,13 @@ public class OrderCarRepository {
         return em.find(OrderCar.class, id);
     }
 
-    public List<OrderCar> findByOrderStatus(String orderStatus){
+    public List<OrderCar> findByOrderStatus(OrderStatus orderStatus){
         return em.createQuery("select o from OrderCar o where o.orderStatus =: orderStatus", OrderCar.class)
                 .setParameter("orderStatus", orderStatus)
                 .getResultList();
     }
 
-    public List<OrderCar> findByOrderCompAndDate(String orderStatus, LocalDateTime startDate, LocalDateTime endDate){
+    public List<OrderCar> findByOrderCompAndDate(OrderStatus orderStatus, LocalDateTime startDate, LocalDateTime endDate){
         return em.createQuery("select o from OrderCar o where o.orderStatus =: orderStatus and o.orderDate <: endDate and o.orderDate >: startDate", OrderCar.class)
                 .setParameter("orderStatus", orderStatus)
                 .setParameter("endDate", endDate)
@@ -46,7 +47,7 @@ public class OrderCarRepository {
                 .getResultList();
     }
 
-    public List<OrderCar> findByOrderCompAndDateCount(String orderStatus, LocalDateTime sp, LocalDateTime ep, int i){
+    public List<OrderCar> findByOrderCompAndDateCount(OrderStatus orderStatus, LocalDateTime sp, LocalDateTime ep, int i){
         LocalDateTime startDate = sp.minusDays(i);
         LocalDateTime endDate = ep.minusDays(i);
         return em.createQuery("select o from OrderCar o where o.orderStatus =: orderStatus and o.orderDate <: endDate and o.orderDate >: startDate", OrderCar.class)

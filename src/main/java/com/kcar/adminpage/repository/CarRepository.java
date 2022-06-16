@@ -96,7 +96,7 @@ public class CarRepository {
 
         JPAQuery<Car> query = queryFactory.selectFrom(car);
 
-        if(condition.getOrderByFilter() != null && condition.getOrderByFilter().equals("상품등록순")){
+        if(condition.getOrderByFilter() != null && condition.getOrderByFilter().equals("상품등록일순")){
             query.orderBy(car.registrationDate.desc());
         }else if(condition.getOrderByFilter() != null && condition.getOrderByFilter().equals("상품수정일순")){
             query.orderBy(car.modifiedDate.desc());
@@ -116,7 +116,7 @@ public class CarRepository {
                 .fetchJoin()
                 .where(builder)
                 .offset(0)
-                .limit(condition.getPaging()) //0보다 큰 값이 반드시 들어옴
+                .limit(50) //0보다 큰 값이 반드시 들어옴
                 .fetch();
     }
 

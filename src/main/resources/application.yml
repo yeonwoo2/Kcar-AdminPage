@@ -5,6 +5,13 @@ spring:
     password: hyeonw1234
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+#  servlet:
+#    multipart:
+#      enabled: true
+#      max-file-size: 200MB
+#      max-reauest-size: 215MB
+#      location: c:/img
+
   jpa:
     hibernate:
       ddl-auto: none

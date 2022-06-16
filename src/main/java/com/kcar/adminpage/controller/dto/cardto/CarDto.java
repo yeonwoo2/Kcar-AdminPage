@@ -23,7 +23,6 @@ public class CarDto {
         private String carNumber; // 차량번호
         private String vehicleType; // 차종
         private String seater;// 인승
-        private String modelYear;// 연식
         private String mileage; // 주행거리
         private String color; // 색상
         private String fuel; // 연료
@@ -31,6 +30,7 @@ public class CarDto {
         private String model; // 모델
         private String detailModel; // 세부모델
         private String transmission; // 변속기
+        private String modelYear;// 연식
         private boolean accident; // 사고유무
         private String driveType; // 구동방식
         private String categoryName; // 카테고리이름

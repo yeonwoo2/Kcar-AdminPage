@@ -17,5 +17,5 @@ public class CarSearchCondition {
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private String OrderByFilter; //DESC ASC
-    private int paging;// 페이징
+    private Integer paging;// 페이징
 }
