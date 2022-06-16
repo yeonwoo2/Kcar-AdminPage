@@ -2,10 +2,11 @@ package com.kcar.adminpage.service;
 
 import com.kcar.adminpage.domain.*;
 import com.kcar.adminpage.domain.enums.SalesStatus;
-import com.kcar.adminpage.dto.IdDto;
-import com.kcar.adminpage.dto.cardto.CarDto;
-import com.kcar.adminpage.dto.cardto.CarSearchConditionDto;
-import com.kcar.adminpage.dto.cardto.CarStatusInfoDto;
+import com.kcar.adminpage.controller.dto.IdDto;
+import com.kcar.adminpage.controller.dto.cardto.CarDto;
+import com.kcar.adminpage.controller.dto.cardto.CarSearchConditionDto;
+import com.kcar.adminpage.controller.dto.cardto.CarStatusInfoDto;
+import com.kcar.adminpage.handler.ex.CustomValidationException;
 import com.kcar.adminpage.repository.*;
 import com.kcar.adminpage.repository.condition.CarSearchCondition;
 import lombok.RequiredArgsConstructor;
@@ -32,8 +33,15 @@ public class CarService {
     @Transactional // 차량 등록
     public void saveCar(CarDto.PostInfo info){
 
-        Category category = categoryRepository.findByName(info.getCategoryName());// 단건 조회
-        Assessor assessor = assessorRepository.findByEmployeeNumber(info.getAssessorEmployeeNumber());//단건 조회
+        Category category;
+        Assessor assessor;
+
+        try{
+            category = categoryRepository.findByName(info.getCategoryName());// 단건 조회
+            assessor = assessorRepository.findByEmployeeNumber(info.getAssessorEmployeeNumber());//단건 조회
+        }catch (Exception e){
+            throw new CustomValidationException("유효한 카테고리 또는 사번을 입력해주세요");
+        }
 
         //차량 가격 생성
         PurchaseCost purchaseCost = PurchaseCost.createCost(info.getPurchaseCost().getCarPrice(),
@@ -127,10 +135,14 @@ public class CarService {
 
     @Transactional
     public void deleteCar(IdDto id) {
-        orderCarRepository.deleteAllWithCheckCar(id.getId());
-        carRepository.deleteByCarIdIn(id.getId()); //차량제거
-        inspectionRecordRepository.deleteByIdIn(id.getId()); //연관관계 제거
-        insuranceHistoryRepository.deleteByIdIn(id.getId()); //연관관계 제거
-        purchaseCostRepository.deleteByIdIn(id.getId()); //연관관계 제거
+
+        try{
+            carRepository.deleteByCarIdIn(id.getId()); //차량제거
+            inspectionRecordRepository.deleteByIdIn(id.getId()); //연관관계 제거
+            insuranceHistoryRepository.deleteByIdIn(id.getId()); //연관관계 제거
+            purchaseCostRepository.deleteByIdIn(id.getId()); //연관관계 제거
+        }catch (Exception e){
+            throw new CustomValidationException("주문된 상품은 삭제할 수 없습니다.");
+        }
     }
 }

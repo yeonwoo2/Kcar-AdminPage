@@ -2,7 +2,6 @@ package com.kcar.adminpage.repository;
 
 import com.kcar.adminpage.domain.*;
 import com.kcar.adminpage.domain.enums.DeliveryStatus;
-import com.kcar.adminpage.dto.delivery.DeliverySearchConditionDto;
 import com.kcar.adminpage.repository.condition.DeliverySearchCondition;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQuery;

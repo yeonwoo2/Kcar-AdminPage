@@ -1,8 +1,8 @@
 package com.kcar.adminpage.service;
 
 import com.kcar.adminpage.domain.OrderCar;
-import com.kcar.adminpage.dto.ordercardto.OrderCarDto;
-import com.kcar.adminpage.dto.ordercardto.OrderCarSearchConditionDto;
+import com.kcar.adminpage.controller.dto.ordercardto.OrderCarDto;
+import com.kcar.adminpage.controller.dto.ordercardto.OrderCarSearchConditionDto;
 import com.kcar.adminpage.repository.OrderCarRepository;
 import com.kcar.adminpage.repository.condition.OrderCarSearchCondition;
 import lombok.RequiredArgsConstructor;

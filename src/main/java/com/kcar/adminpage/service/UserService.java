@@ -1,8 +1,8 @@
 package com.kcar.adminpage.service;
 
 import com.kcar.adminpage.domain.User;
-import com.kcar.adminpage.dto.userdto.UserConditionDto;
-import com.kcar.adminpage.dto.userdto.UserDto;
+import com.kcar.adminpage.controller.dto.userdto.UserConditionDto;
+import com.kcar.adminpage.controller.dto.userdto.UserDto;
 import com.kcar.adminpage.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
 package com.kcar.adminpage.service;
 
 import com.kcar.adminpage.domain.Delivery;
-import com.kcar.adminpage.dto.delivery.DeliveryDto;
-import com.kcar.adminpage.dto.delivery.DeliverySearchConditionDto;
+import com.kcar.adminpage.controller.dto.delivery.DeliveryDto;
+import com.kcar.adminpage.controller.dto.delivery.DeliverySearchConditionDto;
 import com.kcar.adminpage.repository.DeliveryRepository;
 import com.kcar.adminpage.repository.condition.DeliverySearchCondition;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ public class DeliveryService {
         DeliverySearchCondition condition = deliverySearchConditionDto.toSearchCondition(); //상태객체 변환
 
         List<Delivery> all = deliveryRepository.findBySearchCondition(condition);
-        return all.stream()
+        List<DeliveryDto.GetInfo> collect = all.stream()
                 .map(d -> new DeliveryDto.GetInfo(d.getId(),
                         d.getReceiver(),
                         d.getNumber(),
@@ -35,6 +35,7 @@ public class DeliveryService {
                         d.getModifiedDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
                         d.getAddress()))
                 .collect(Collectors.toList());
+        return collect;
     }
 
     @Transactional

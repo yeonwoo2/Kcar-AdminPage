@@ -1,11 +1,9 @@
 package com.kcar.adminpage.repository;
 
-import com.kcar.adminpage.domain.Delivery;
-import com.kcar.adminpage.domain.QDelivery;
 import com.kcar.adminpage.domain.QUser;
 import com.kcar.adminpage.domain.User;
 import com.kcar.adminpage.domain.enums.Authority;
-import com.kcar.adminpage.dto.userdto.UserConditionDto;
+import com.kcar.adminpage.controller.dto.userdto.UserConditionDto;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;

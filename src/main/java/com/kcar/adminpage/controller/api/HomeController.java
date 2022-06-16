@@ -1,10 +1,10 @@
 package com.kcar.adminpage.controller.api;
 
-import com.kcar.adminpage.dto.InquiryClientDto;
-import com.kcar.adminpage.dto.InquiryItemDto;
-import com.kcar.adminpage.dto.InquiryOfferDto;
-import com.kcar.adminpage.dto.Result;
-import com.kcar.adminpage.dto.homedto.HomeDto;
+import com.kcar.adminpage.controller.dto.InquiryClientDto;
+import com.kcar.adminpage.controller.dto.InquiryItemDto;
+import com.kcar.adminpage.controller.dto.InquiryOfferDto;
+import com.kcar.adminpage.controller.dto.Result;
+import com.kcar.adminpage.controller.dto.homedto.HomeDto;
 import com.kcar.adminpage.service.HomeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,20 +24,20 @@ public class HomeController {
     }
 
     @GetMapping("/api/home-inquiry-offer")
-    public Result inquiryOffer(){
+    public Result<List<InquiryOfferDto>> inquiryOffer(){
         List<InquiryOfferDto> inquiryInfo = homeService.findInquiryOfferInfo();
-        return new Result(inquiryInfo.size(), inquiryInfo);
+        return new Result<List<InquiryOfferDto>>(inquiryInfo.size(), inquiryInfo);
     }
 
     @GetMapping("/api/home-inquiry-item")
-    public Result inquiryItem(){
+    public Result<List<InquiryItemDto>> inquiryItem(){
         List<InquiryItemDto> inquiryInfo = homeService.findInquiryItemInfo();
-        return new Result(inquiryInfo.size(), inquiryInfo);
+        return new Result<List<InquiryItemDto>>(inquiryInfo.size(), inquiryInfo);
     }
 
     @GetMapping("/api/home-inquiry-client")
-    public Result inquiryClient(){
+    public Result<List<InquiryClientDto>> inquiryClient(){
         List<InquiryClientDto> inquiryInfo = homeService.findInquiryClientInfo();
-        return new Result(inquiryInfo.size(), inquiryInfo);
+        return new Result<List<InquiryClientDto>>(inquiryInfo.size(), inquiryInfo);
     }
 }
