@@ -34,19 +34,6 @@ public class CarRepository {
                 .getResultList();
     }
 
-    public List<Car> findByName(String name){
-        return em.createQuery("select c from Car c where c.name =: name", Car.class)
-                .setParameter("name", name)
-                .getResultList();
-    }
-
-    public List<Car> findAllWithCategoryAndAssessor(){
-        return em.createQuery("select c from Car c" +
-                                      " left join fetch c.categories t" +
-                                      " left join fetch c.assessor a", Car.class)
-                .getResultList();
-    }
-
     public List<Car> findBySalesStatus(SalesStatus salesStatus){
         return em.createQuery("select c from Car c where c.salesStatus =: salesStatus", Car.class)
                 .setParameter("salesStatus", salesStatus)
@@ -116,7 +103,7 @@ public class CarRepository {
                 .fetchJoin()
                 .where(builder)
                 .offset(0)
-                .limit(50) //0보다 큰 값이 반드시 들어옴
+                .limit(condition.getPaging()) //0보다 큰 값이 반드시 들어옴
                 .fetch();
     }
 

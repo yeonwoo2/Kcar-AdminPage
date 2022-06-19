@@ -30,15 +30,15 @@ public class CarService {
     private final InspectionRecordRepository inspectionRecordRepository;
 
     @Transactional // 차량 등록
-    public void saveCar(CarDto.PostInfo info){
+    public void saveCar(CarDto.PostInfo info) {
 
         Category category;
         Assessor assessor;
 
-        try{
+        try {
             category = categoryRepository.findByName(info.getCategoryName());// 단건 조회
             assessor = assessorRepository.findByEmployeeNumber(info.getAssessorEmployeeNumber());//단건 조회
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new CustomValidationException("유효한 카테고리 또는 사번을 입력해주세요");
         }
 
@@ -60,28 +60,28 @@ public class CarService {
 
 
         Car car = Car.createCar(info.getName(),
-                                info.getCarNumber(),
-                                info.getVehicleType(),
-                                info.getSeater(),
-                                info.getModelYear(),
-                                info.getMileage(),
-                                info.getColor(),
-                                info.getFuel(),
-                                info.getImportStatus(),
-                                info.getManufacturer(),
-                                info.getModel(),
-                                info.getDetailModel(),
-                                info.getTransmission(),
-                                info.isAccident(),
-                                info.getDriveType(),
-                                info.getImage(),
-                                info.getStockQuantity(),
-                                info.getSalesStatus(),
-                                category,
-                                assessor,
-                                purchaseCost,
-                                inspectionRecord,
-                                insuranceHistory);
+                info.getCarNumber(),
+                info.getVehicleType(),
+                info.getSeater(),
+                info.getModelYear(),
+                info.getMileage(),
+                info.getColor(),
+                info.getFuel(),
+                info.getImportStatus(),
+                info.getManufacturer(),
+                info.getModel(),
+                info.getDetailModel(),
+                info.getTransmission(),
+                info.isAccident(),
+                info.getDriveType(),
+                info.getImage(),
+                info.getStockQuantity(),
+                info.getSalesStatus(),
+                category,
+                assessor,
+                purchaseCost,
+                inspectionRecord,
+                insuranceHistory);
 
         purchaseCostRepository.save(purchaseCost);
         inspectionRecordRepository.save(inspectionRecord);
@@ -90,12 +90,12 @@ public class CarService {
     }
 
     @Transactional // 차량 업데이트
-    public void updateCar(Long carId, CarDto.UpdateInfo updateInfo){
+    public void updateCar(Long carId, CarDto.UpdateInfo updateInfo) {
         Car findCar = carRepository.findOne(carId);
         findCar.changeCarInfo(updateInfo.getSalesStatus(), updateInfo.getStockQuantity());
     }
 
-    public CarStatusInfoDto findCarBySaleStatus(){
+    public CarStatusInfoDto findCarBySaleStatus() {
         List<Car> all = carRepository.findAll();
         List<Car> onSale = carRepository.findBySalesStatus(SalesStatus.ON);
         List<Car> readySale = carRepository.findBySalesStatus(SalesStatus.READY);
@@ -104,45 +104,45 @@ public class CarService {
     }
 
     //필터검색
-    public List<CarDto.GetInfo> findByCarCondition(CarSearchConditionDto condition){
+    public List<CarDto.GetInfo> findByCarCondition(CarSearchConditionDto condition) {
         System.out.println("============= " + condition.getCarName());
         CarSearchCondition carSearchCondition = condition.toSearchCondition();
         List<Car> bySearchCondition = carRepository.findBySearchCondition(carSearchCondition);
         return bySearchCondition.stream().map(c -> new CarDto.GetInfo(c.getId(),
-                            c.getSalesStatus(),
-                            c.getImportStatus(),
-                            c.getName(),
-                            c.getCarNumber(),
-                            c.getVehicleType(),
-                            c.getSeater(),
-                            c.getMileage(),
-                            c.getColor(),
-                            c.getFuel(),
-                            c.getManufacturer(),
-                            c.getModel(),
-                            c.getDetailModel(),
-                            c.getTransmission(),
-                            c.getModelYear(),
-                            c.isAccident(),
-                            c.getDriveType(),
-                            c.getCategories().getName(),
-                            c.getAssessor().getName(),
-                            c.getAssessor().getDirectShop(),
-                            c.getStockQuantity(),
-                            c.getRegistrationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))))
-                            .collect(Collectors.toList());
+                c.getSalesStatus(),
+                c.getImportStatus(),
+                c.getName(),
+                c.getCarNumber(),
+                c.getVehicleType(),
+                c.getSeater(),
+                c.getMileage(),
+                c.getColor(),
+                c.getFuel(),
+                c.getManufacturer(),
+                c.getModel(),
+                c.getDetailModel(),
+                c.getTransmission(),
+                c.getModelYear(),
+                c.isAccident(),
+                c.getDriveType(),
+                c.getCategories().getName(),
+                c.getAssessor().getName(),
+                c.getAssessor().getDirectShop(),
+                c.getStockQuantity(),
+                c.getRegistrationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))))
+                .collect(Collectors.toList());
     }
 
     @Transactional
     public void deleteCar(IdDto id) {
-
-        try{
+        if(id.getId().size() == 0){
+            throw new CustomValidationException("판매종료된 상품만 삭제할 수 있습니다.");
+        }else{
             carRepository.deleteByCarIdIn(id.getId()); //차량제거
             inspectionRecordRepository.deleteByIdIn(id.getId()); //연관관계 제거
             insuranceHistoryRepository.deleteByIdIn(id.getId()); //연관관계 제거
             purchaseCostRepository.deleteByIdIn(id.getId()); //연관관계 제거
-        }catch (Exception e){
-            throw new CustomValidationException("주문된 상품은 삭제할 수 없습니다.");
         }
+
     }
 }

@@ -17,13 +17,13 @@ public class DeliveryController {
 
     private final DeliveryService deliveryService;
 
-    @GetMapping("/api/deliveries")
+    @PutMapping("/api/deliveries")
     public Result<List<DeliveryDto.GetInfo>> deliveryList(@RequestBody DeliverySearchConditionDto searchConditionDto){
         List<DeliveryDto.GetInfo> allDelivery = deliveryService.findAllDelivery(searchConditionDto);
         return new Result<List<DeliveryDto.GetInfo>>(allDelivery.size(), allDelivery);
     }
 
-    @PutMapping("/api/deliveries") //차량 정보 업데이트 -> return httpResponse... 작업요함
+    @PutMapping("/api/deliveries-update") //차량 정보 업데이트 -> return httpResponse... 작업요함
     public ResponseDto<Integer> updateDeliveryInfo(@RequestBody DeliveryDto.UpdateInfo request){
         deliveryService.updateDelivery(request);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);

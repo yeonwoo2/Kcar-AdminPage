@@ -11,6 +11,8 @@ import lombok.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,14 +36,14 @@ public class CarController {
         return new Result<List<CarDto.GetInfo>>(allCarInfo.size(), allCarInfo);
     }
 
-    @PostMapping("/api/car-save") //차량 등록 -> return httpResponse... 작업요함
-    public ResponseDto<String> carSave(@Validated @RequestBody CarDto.PostInfo info) {
+    @PostMapping("/api/car-save") //차량 등록
+    public ResponseDto<String> carSave(@RequestBody CarDto.PostInfo info) {
         carService.saveCar(info);
         return new ResponseDto<String>(HttpStatus.OK.value(), "차량등록 완료");
     }
 
     //선택삭제
-    @DeleteMapping("/api/cars-delete")
+    @PutMapping("/api/cars-delete")
     public ResponseEntity<ResponseDto<String>> deleteCar(@RequestBody IdDto id) {
         carService.deleteCar(id);
         HttpHeaders headers = new HttpHeaders();

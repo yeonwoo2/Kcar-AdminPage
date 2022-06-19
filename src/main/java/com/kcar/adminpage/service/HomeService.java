@@ -57,7 +57,7 @@ public class HomeService {
 
         List<Car> orderByDate = carRepository.findOrderByDate();
         List<RecentCreateCarDto> recentCreateCarDtoList = orderByDate.stream().
-                map(c -> new RecentCreateCarDto(c.getImportStatus(), c.getName(), c.getRegistrationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))))
+                map(c -> new RecentCreateCarDto(c.getId() ,c.getImportStatus(), c.getName(), c.getRegistrationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))))
                 .collect(Collectors.toList());
 
         List<Review> allReview = reviewRepository.findAll(); //총 후기수
@@ -79,8 +79,6 @@ public class HomeService {
             List<Question> questions = inquiryRepository.findByDateAndAnswerType(AnswerType.OFFER, dateParser.startDate(), i);
             inquiryOfferDtoList.add(new InquiryOfferDto(String.valueOf(i), questions.size()));
         }
-
-
 
         OrderAndDeliveryInfoDto orderAndDeliveryInfoDto = new OrderAndDeliveryInfoDto(orderWait.size(),orderComp.size(), ready.size(), going.size(), deliveryComp.size());
         ClaimAndCalculate claimAndCalculate = new ClaimAndCalculate(orderCancel.size(), orderReturn.size(), comp.size());

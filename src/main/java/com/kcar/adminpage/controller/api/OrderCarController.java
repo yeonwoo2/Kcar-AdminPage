@@ -5,7 +5,7 @@ import com.kcar.adminpage.controller.dto.Result;
 import com.kcar.adminpage.controller.dto.ordercardto.OrderCarSearchConditionDto;
 import com.kcar.adminpage.service.OrderCarService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +17,7 @@ public class OrderCarController {
 
     private final OrderCarService orderCarService;
 
-    @GetMapping("/api/orders")
+    @PutMapping("/api/orders")
     public Result orderList(@RequestBody OrderCarSearchConditionDto conditionDto){
         List<OrderCarDto> orders = orderCarService.findAllOrders(conditionDto);
         return new Result(orders.size(), orders);
