@@ -26,12 +26,4 @@ public class OrderFormRepository {
         em.remove(orderForm);
     }
 
-    public List<OrderForm> findAllWithOrderFormAndUser(){
-        return em.createQuery("select o from OrderForm o" +
-                " left join fetch o.orderCar c" +
-                " left join fetch o.user u where c.paymentDate =: date", OrderForm.class)
-                .setParameter("date", null)
-                .getResultList();
-    }
-
 }

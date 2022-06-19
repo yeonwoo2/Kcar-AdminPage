@@ -43,7 +43,6 @@ public class OrderCar {
         OrderCar orderCar = new OrderCar();
         orderCar.orderStatus = orderStatus;
         orderCar.orderForm = orderForm;
-        orderForm.setOrderCar(orderCar); // 연관관계 양방향 매핑
         orderCar.car = car;
         return orderCar;
     }
