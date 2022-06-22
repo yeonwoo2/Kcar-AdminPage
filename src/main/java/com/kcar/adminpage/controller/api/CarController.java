@@ -43,7 +43,7 @@ public class CarController {
     }
 
     //선택삭제
-    @PutMapping("/api/cars-delete")
+    @DeleteMapping("/api/cars-delete")
     public ResponseEntity<ResponseDto<String>> deleteCar(@RequestBody IdDto id) {
         carService.deleteCar(id);
         HttpHeaders headers = new HttpHeaders();

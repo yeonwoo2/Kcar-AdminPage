@@ -143,6 +143,5 @@ public class CarService {
             insuranceHistoryRepository.deleteByIdIn(id.getId()); //연관관계 제거
             purchaseCostRepository.deleteByIdIn(id.getId()); //연관관계 제거
         }
-
     }
 }

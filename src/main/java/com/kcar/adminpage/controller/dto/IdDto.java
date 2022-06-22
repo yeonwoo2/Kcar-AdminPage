@@ -7,5 +7,5 @@ import java.util.List;
 
 @Getter @Setter
 public class IdDto {
-    List<Long> id;
+    private List<Long> id;
 }
