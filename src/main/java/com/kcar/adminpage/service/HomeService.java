@@ -29,7 +29,7 @@ public class HomeService {
     private final ReviewRepository reviewRepository;
     private final UserRepository userRepository;
     private final InquiryRepository inquiryRepository;
-    private LocalDateParser dateParser = new LocalDateParser(LocalDateTime.now()); //날짜 변환 util
+    private final LocalDateParser dateParser = new LocalDateParser(LocalDateTime.now()); //날짜 변환 util
 
     public HomeDto findHomeInfo() {
         List<StatisticsDto> statisticsDtoList = new ArrayList<>();
