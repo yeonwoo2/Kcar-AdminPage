@@ -26,12 +26,6 @@ public class PurchaseCostRepository {
         em.remove(purchaseCost);
     }
 
-    public List<PurchaseCost> findAllWithCarAndOrderCar(){
-        return em.createQuery("select p from PurchaseCost p" +
-                " left join fetch p.car c", PurchaseCost.class)
-                .getResultList();
-    }
-
     //벌크연산
     public void deleteByIdIn(List<Long> cars) {
         em.createQuery("delete from PurchaseCost p where p.id in :cars")

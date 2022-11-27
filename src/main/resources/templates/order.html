@@ -1,0 +1,349 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>차량상세</title>
+    <link rel="icon" href="img/favicon.jpg">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="css/flaticon.css">
+    <!-- fontawesome CSS -->
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <!-- magnific CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/gijgo.min.css">
+    <!-- niceselect CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- slick CSS -->
+    <link rel="stylesheet" href="css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="css/detail.css" />
+</head>
+<body>
+<!--::header part start::-->
+<header class="main_menu">
+    <div class="main_menu_iner">
+        <div class="container">
+            <div class="row align-items-center ">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
+                        <a class="navbar-brand" href="http://localhost:8080/"> <img src="img/logo.png" width="150" alt="logo"> </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse main-menu-item justify-content-center"
+                             id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">내차팔기</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">내차사기</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">렌트</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#">금융</a>
+                                    <!--                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"-->
+                                    <!--                                       role="button" data-toggle="dropdown" aria-haspopup="true"-->
+                                    <!--                                       aria-expanded="false">-->
+                                    <!--                                        금융-->
+                                    <!--                                    </a>-->
+                                    <!--                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+                                    <!--                                        <a class="dropdown-item" href="#">Blog</a>-->
+                                    <!--                                        <a class="dropdown-item" href="#">Single blog</a>-->
+                                    <!--                                    </div>-->
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#">브랜드 인증관</a>
+                                    <!--                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_1"-->
+                                    <!--                                       role="button" data-toggle="dropdown" aria-haspopup="true"-->
+                                    <!--                                       aria-expanded="false">-->
+                                    <!--                                        브랜드인증관-->
+                                    <!--                                    </a>-->
+                                    <!--                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">-->
+                                    <!--                                        <a class="dropdown-item" href="top_place.html">top place</a>-->
+                                    <!--                                        <a class="dropdown-item" href="tour_details.html">tour details</a>-->
+                                    <!--                                        <a class="dropdown-item" href="elements.html">Elements</a>-->
+                                    <!--                                    </div>-->
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">위클리특가</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header part end-->
+
+<section class="hotel_list section_padding">
+    <div class="container">
+        <section id="detail">
+
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1215" height="1383" viewBox="0 0 1215 1383">
+                <defs>
+                    <filter id="사각형_3310" x="0" y="57.5" width="1215" height="345" filterUnits="userSpaceOnUse">
+                        <feOffset input="SourceAlpha"/>
+                        <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                        <feFlood flood-opacity="0.161"/>
+                        <feComposite operator="in" in2="blur"/>
+                        <feComposite in="SourceGraphic"/>
+                    </filter>
+                    <filter id="사각형_3313" x="0" y="417.5" width="1215" height="229" filterUnits="userSpaceOnUse">
+                        <feOffset input="SourceAlpha"/>
+                        <feGaussianBlur stdDeviation="2.5" result="blur-2"/>
+                        <feFlood flood-opacity="0.161"/>
+                        <feComposite operator="in" in2="blur-2"/>
+                        <feComposite in="SourceGraphic"/>
+                    </filter>
+                    <filter id="사각형_3311" x="30" y="155.5" width="1155" height="95" filterUnits="userSpaceOnUse">
+                        <feOffset input="SourceAlpha"/>
+                        <feGaussianBlur stdDeviation="2.5" result="blur-3"/>
+                        <feFlood flood-opacity="0.161"/>
+                        <feComposite operator="in" in2="blur-3"/>
+                        <feComposite in="SourceGraphic"/>
+                    </filter>
+                    <filter id="사각형_3314" x="30" y="515.5" width="575" height="95" filterUnits="userSpaceOnUse">
+                        <feOffset input="SourceAlpha"/>
+                        <feGaussianBlur stdDeviation="2.5" result="blur-4"/>
+                        <feFlood flood-opacity="0.161"/>
+                        <feComposite operator="in" in2="blur-4"/>
+                        <feComposite in="SourceGraphic"/>
+                    </filter>
+                    <filter id="사각형_3318" x="0" y="726.5" width="1215" height="95" filterUnits="userSpaceOnUse">
+                        <feOffset input="SourceAlpha"/>
+                        <feGaussianBlur stdDeviation="2.5" result="blur-5"/>
+                        <feFlood flood-opacity="0.161"/>
+                        <feComposite operator="in" in2="blur-5"/>
+                        <feComposite in="SourceGraphic"/>
+                    </filter>
+                    <filter id="사각형_3319" x="0" y="903.5" width="1215" height="324" filterUnits="userSpaceOnUse">
+                        <feOffset input="SourceAlpha"/>
+                        <feGaussianBlur stdDeviation="2.5" result="blur-6"/>
+                        <feFlood flood-opacity="0.161"/>
+                        <feComposite operator="in" in2="blur-6"/>
+                        <feComposite in="SourceGraphic"/>
+                    </filter>
+                    <filter id="사각형_3316" x="610" y="515.5" width="575" height="95" filterUnits="userSpaceOnUse">
+                        <feOffset input="SourceAlpha"/>
+                        <feGaussianBlur stdDeviation="2.5" result="blur-7"/>
+                        <feFlood flood-opacity="0.161"/>
+                        <feComposite operator="in" in2="blur-7"/>
+                        <feComposite in="SourceGraphic"/>
+                    </filter>
+                    <filter id="사각형_3320" x="504.5" y="1327" width="206" height="56" filterUnits="userSpaceOnUse">
+                        <feOffset input="SourceAlpha"/>
+                        <feGaussianBlur stdDeviation="1" result="blur-8"/>
+                        <feFlood flood-opacity="0.161"/>
+                        <feComposite operator="in" in2="blur-8"/>
+                        <feComposite in="SourceGraphic"/>
+                    </filter>
+                </defs>
+                <text id="결제방법을_선택해주세요." data-name="결제방법을 선택해주세요." transform="translate(7.5 28)" font-size="24" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-weight="700" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">결제방법을 선택해주세요.</tspan></text>
+                <text id="선결제_필요_금액" data-name="선결제 필요 금액" transform="translate(7.5 707)" font-size="24" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-weight="700" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">선결제 필요 금액</tspan></text>
+                <text id="예상_결제_금액" data-name="예상 결제 금액" transform="translate(7.5 884)" font-size="26" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-weight="700" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">예상 결제 금액</tspan></text>
+                <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#사각형_3310)">
+                    <g id="사각형_3310-2" data-name="사각형 3310" transform="translate(7.5 65)" fill="#fff" stroke="#c4c4c4" stroke-width="1" opacity="0.5">
+                        <rect width="1200" height="330" rx="5" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="1199" height="329" rx="4.5" fill="none"/>
+                    </g>
+                </g>
+                <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#사각형_3313)">
+                    <g id="사각형_3313-2" data-name="사각형 3313" transform="translate(7.5 425)" fill="#fff" stroke="#c4c4c4" stroke-width="1" opacity="0.5">
+                        <rect width="1200" height="214" rx="5" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="1199" height="213" rx="4.5" fill="none"/>
+                    </g>
+                </g>
+                <text id="_3일간_타면서_결제수단_결정하기_" data-name="3일간 타면서, 결제수단 결정하기!" transform="translate(37.5 125)" font-size="24" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">3일간 타면서, 결제수단 결정하기!</tspan></text>
+                <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#사각형_3311)">
+                    <g id="사각형_3311-2" data-name="사각형 3311" transform="translate(37.5 163)" fill="#fff" stroke="#888" stroke-width="1" opacity="0.5">
+                        <rect width="1140" height="80" rx="40" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="1139" height="79" rx="39.5" fill="none"/>
+                    </g>
+                </g>
+                <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#사각형_3314)">
+                    <g id="사각형_3314-2" data-name="사각형 3314" transform="translate(37.5 523)" fill="#fff" stroke="#888" stroke-width="1" opacity="0.5">
+                        <rect width="560" height="80" rx="40" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="559" height="79" rx="39.5" fill="none"/>
+                    </g>
+                </g>
+                <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#사각형_3318)">
+                    <g id="사각형_3318-2" data-name="사각형 3318" transform="translate(7.5 734)" fill="#fff" stroke="#888" stroke-width="1" opacity="0.5">
+                        <rect width="1200" height="80" rx="5" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="1199" height="79" rx="4.5" fill="none"/>
+                    </g>
+                </g>
+                <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#사각형_3319)">
+                    <g id="사각형_3319-2" data-name="사각형 3319" transform="translate(7.5 911)" fill="#fff" stroke="#888" stroke-width="1" opacity="0.5">
+                        <rect width="1200" height="309" rx="5" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="1199" height="308" rx="4.5" fill="none"/>
+                    </g>
+                </g>
+                <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#사각형_3316)">
+                    <g id="사각형_3316-2" data-name="사각형 3316" transform="translate(617.5 523)" fill="#fff" stroke="#888" stroke-width="1" opacity="0.5">
+                        <rect width="560" height="80" rx="40" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="559" height="79" rx="39.5" fill="none"/>
+                    </g>
+                </g>
+                <text id="홈서비스_예치금" data-name="홈서비스 예치금" transform="translate(37.5 783)" font-size="20" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">홈서비스 예치금</tspan></text>
+                <text id="차량가" transform="translate(37.5 964)" font-size="20" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">차량가</tspan></text>
+                <text id="이전등록비" transform="translate(37.5 1008)" font-size="20" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">이전등록비</tspan></text>
+                <text id="관리비용" transform="translate(37.5 1052)" font-size="20" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">관리비용</tspan></text>
+                <text id="등록신청대행_수수료" data-name="등록신청대행 수수료" transform="translate(37.5 1096)" font-size="20" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">등록신청대행 수수료</tspan></text>
+                <text id="K_Car_Warranty_KW6_선택시_" data-name="K Car Warranty(KW6 선택시)" transform="translate(37.5 1140)" fill="#818181" font-size="20" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0" fill="#000">K Car Warranty</tspan><tspan y="0" fill="#818181">(KW6 선택시)</tspan></text>
+                <text id="배송비_" data-name="배송비*" transform="translate(37.5 1184)" fill="#8f0e21" font-size="20" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0" fill="#000">배송비</tspan><tspan y="0" fill="#8f0e21">*</tspan></text>
+                <text id="합계" transform="translate(37.5 1266)" font-size="22" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-weight="700" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">합계</tspan></text>
+                <text id="_500_000원" data-name="500,000원" transform="translate(1057.5 784)" fill="#8f0e21" font-size="22" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-weight="700" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">500,000원</tspan></text>
+                <text id="_10_900_000원" data-name="10,900,000원" transform="translate(1036.5 964)" font-size="20" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">10,900,000원</tspan></text>
+                <text id="_860_000원" data-name="860,000원" transform="translate(1061.5 1008)" font-size="20" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">860,000원</tspan></text>
+                <text id="_297_000원" data-name="297,000원" transform="translate(1061.5 1052)" font-size="20" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">297,000원</tspan></text>
+                <text id="_33_000원" data-name="33,000원" transform="translate(1075.5 1096)" font-size="20" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">33,000원</tspan></text>
+                <text id="_465_000원" data-name="465,000원" transform="translate(1061.5 1140)" font-size="20" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">465,000원</tspan></text>
+                <text id="_129_000원" data-name="129,000원" transform="translate(1061.5 1184)" font-size="20" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">129,000원</tspan></text>
+                <text id="_12_684_000원" data-name="12,684,000원" transform="translate(1021.5 1266)" fill="#8f0e21" font-size="22" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-weight="700" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">12,684,000원</tspan></text>
+                <text id="_-_K_Car_Warranty_가입비는_KW6에_가입하는_경우의_예상_비용입니다._-_K_Car_Warranty에_가입하지_않거나_KW3_또는_KW12에_가입하는_경우_실제_가입비는_달라질_수_있습니다._-_배송비는_배송_지역에_따라_다릅니다._정확한_배송비는_결제_단계에서_확인하실_수_있으며_예상_결제_금액에는_포함되지_않습니다._-_이전등록비_감면_혜택_선택은_결제_후_추가정보_입력_할_때_선택할_수_있습니다." data-name="- K Car Warranty 가입비는 KW6에 가입하는 경우의 예상 비용입니다.
+- K Car Warranty에 가입하지 않거나 KW3 또는 KW12에 가입하는 경우 실제 가입비는 달라질 수 있습니다.
+- 배송비는 배송 지역에 따라 다릅니다. 정확한 배송비는 결제 단계에서 확인하실 수 있으며, 예상 결제 금액에는 포함되지 않습니다.
+- 이전등록비 감면 혜택 선택은 결제 후 추가정보 입력 할 때 선택할 수 있습니다." transform="translate(37.5 289)" font-size="14" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">- K Car Warranty 가입비는 KW6에 가입하는 경우의 예상 비용입니다.</tspan><tspan x="0" y="24">- K Car Warranty에 가입하지 않거나 KW3 또는 KW12에 가입하는 경우 실제 가입비는 달라질 수 있습니다.</tspan><tspan x="0" y="48">- 배송비는 배송 지역에 따라 다릅니다. 정확한 배송비는 결제 단계에서 확인하실 수 있으며, 예상 결제 금액에는 포함되지 않습니다.</tspan><tspan x="0" y="72">- 이전등록비 감면 혜택 선택은 결제 후 추가정보 입력 할 때 선택할 수 있습니다.</tspan></text>
+                <text id="자세히_보기" data-name="자세히 보기" transform="translate(1065.5 210)" font-size="16" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" letter-spacing="-0.07em" opacity="0.8" text-decoration="underline"><tspan x="0" y="0">자세히 보기</tspan></text>
+                <text id="계좌이체로_결제수단_선택" data-name="계좌이체로 결제수단 선택" transform="translate(101.5 211)" font-size="18" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">계좌이체로 결제수단 선택</tspan></text>
+                <rect id="사각형_3312" data-name="사각형 3312" width="24" height="24" rx="5" transform="translate(67.5 191)" fill="#d4d4d4"/>
+                <g id="그룹_1974" data-name="그룹 1974" transform="translate(-352.5 -167)">
+                    <text id="전액현금" transform="translate(454 738)" font-size="18" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">전액현금</tspan></text>
+                    <rect id="사각형_3315" data-name="사각형 3315" width="24" height="24" rx="5" transform="translate(420 718)" fill="#d4d4d4"/>
+                </g>
+                <g id="그룹_1975" data-name="그룹 1975" transform="translate(-352.5 -167)">
+                    <text id="현금_할부" data-name="현금 + 할부" transform="translate(1034 738)" font-size="18" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">현금 + 할부</tspan></text>
+                    <rect id="사각형_3317" data-name="사각형 3317" width="24" height="24" rx="5" transform="translate(1000 718)" fill="#d4d4d4"/>
+                </g>
+                <text id="미리_결제수단_선택하기" data-name="미리 결제수단 선택하기" transform="translate(37.5 487)" font-size="24" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em" opacity="0.8"><tspan x="0" y="0">미리 결제수단 선택하기</tspan></text>
+
+                <a onclick="payCheck();" href="http://localhost:8080/" >
+                    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#사각형_3320)">
+                        <rect id="사각형_3320-2" data-name="사각형 3320" width="200" height="50" rx="10" transform="translate(507.5 1330)" fill="#b5122a"/>
+                    </g>
+                    <text id="다음" transform="translate(590.5 1364)" fill="#fff" font-size="20" font-family="NotoSansCJKkr-Medium, Noto Sans CJK KR" font-weight="500" letter-spacing="-0.07em"><tspan x="0" y="0">결제</tspan></text>
+                </a>
+            </svg>
+
+
+        </section>
+    </div>
+</section>
+
+
+<!-- footer part start-->
+<footer class="footer-area">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-sm-6 col-md-5">
+                <div class="single-footer-widget">
+                    <ul>
+                        <li><a href="#">회사소개</a></li>
+                        <li><a href="#">IR</a></li>
+                        <li><a href="#">보증서비스</a></li>
+                        <li><a href="#">고객지원</a></li>
+                        <li><a href="#">ESG</a></li>
+                        <li><a href="#">인재채용</a></li>
+                        <li><a href="#">개인정보처리방침</a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">Foreigner Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="single-footer-widget">
+                    <div class="form-wrap" id="mc_embed_signup">
+                        <ul>
+                            <li><p>월~토요일 09:00~18:00</p></li>
+                            <li><p>법정공휴일/일요일</p></li>
+                            <li><p>내차사기 홈서비스 (연결 1번) / 일반문의 (연결 4번)</p></li>
+                            <li><p>월~토요일 09:00~18:00</p></li>
+                        </ul>
+                        <!-- <form target="_blank"
+                            action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                            method="get" class="form-inline">
+                            <input class="form-control" name="EMAIL" placeholder="Your Email Address"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '"
+                                required="" type="email">
+                            <button class="click-btn btn btn-default text-uppercase"> <i class="far fa-paper-plane"></i>
+                            </button>
+                            <div style="position: absolute; left: -5000px;">
+                                <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value=""
+                                    type="text">
+                            </div>
+
+                            <div class="info"></div>
+                        </form> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="single-footer-widget footer_icon">
+                    <p>사업장 소재지 : 서울특별시 영등포구 선유로 43길 27, 3층(양평동3가, 청우오토프라자)</p>
+                    <span>partnership@kcar.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="copyright_part_text text-center">
+                    <p class="footer-text m-0">
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- footer part end-->
+
+<script>
+    function payCheck(){
+    alert("결제완료");
+    location.href = "http://localhost:8080/";
+}
+</script>
+<!-- jquery plugins here-->
+<script src="js/jquery-1.12.1.min.js"></script>
+<!-- popper js -->
+<script src="js/popper.min.js"></script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- magnific js -->
+<script src="js/jquery.magnific-popup.js"></script>
+<!-- swiper js -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- masonry js -->
+<script src="js/masonry.pkgd.js"></script>
+<!-- masonry js -->
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/gijgo.min.js"></script>
+<!-- contact js -->
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/contact.js"></script>
+<!-- custom js -->
+<script src="js/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>차량상세</title>
+    <link rel="icon" href="img/favicon.jpg">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="css/flaticon.css">
+    <!-- fontawesome CSS -->
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <!-- magnific CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/gijgo.min.css">
+    <!-- niceselect CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- slick CSS -->
+    <link rel="stylesheet" href="css/slick.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="css/detail.css" />
+</head>
+<body>
+<!--::header part start::-->
+<header class="main_menu">
+    <div class="main_menu_iner">
+        <div class="container">
+            <div class="row align-items-center ">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
+                        <a class="navbar-brand" href="http://localhost:8080/"> <img src="img/logo.png" width="150" alt="logo"> </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse main-menu-item justify-content-center"
+                             id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">내차팔기</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">내차사기</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">렌트</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#">금융</a>
+                                    <!--                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"-->
+                                    <!--                                       role="button" data-toggle="dropdown" aria-haspopup="true"-->
+                                    <!--                                       aria-expanded="false">-->
+                                    <!--                                        금융-->
+                                    <!--                                    </a>-->
+                                    <!--                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+                                    <!--                                        <a class="dropdown-item" href="#">Blog</a>-->
+                                    <!--                                        <a class="dropdown-item" href="#">Single blog</a>-->
+                                    <!--                                    </div>-->
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#">브랜드 인증관</a>
+                                    <!--                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_1"-->
+                                    <!--                                       role="button" data-toggle="dropdown" aria-haspopup="true"-->
+                                    <!--                                       aria-expanded="false">-->
+                                    <!--                                        브랜드인증관-->
+                                    <!--                                    </a>-->
+                                    <!--                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">-->
+                                    <!--                                        <a class="dropdown-item" href="top_place.html">top place</a>-->
+                                    <!--                                        <a class="dropdown-item" href="tour_details.html">tour details</a>-->
+                                    <!--                                        <a class="dropdown-item" href="elements.html">Elements</a>-->
+                                    <!--                                    </div>-->
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">위클리특가</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header part end-->
+
+<section class="hotel_list section_padding">
+    <div class="container">
+        <section id="detail">
+            <div class="util">
+                <span>네비게이션</span>
+                <span>후방카메라</span>
+                <span>하이패스</span>
+            </div>
+            <h1 class="carName" th:text="${carDetail.name}"></h1>
+            <div class="carInfo">
+                <span th:text="${carDetail.modelYear}"></span>
+                <span>약정거리 연 2만km</span>
+                <span th:text="${carDetail.mileage}"></span>
+                <span th:text="${carDetail.color}"></span>
+                <span th:text="${carDetail.vehicleType}"></span>
+                <div class="carImgBox">
+                    <img th:src="${carDetail.img}" alt="car img" />
+                </div>
+                <div class="priceInfo">
+                    <p style="font-weight: 600"><span class="price" th:text="${carDetail.price}"></span><span class="price">만원</span></p>
+                    <p>할부 <span class="installment">월81만원</span></p>
+                </div>
+            </div>
+        </section>
+        <section id="options">
+            <div class="option-header">
+                <h2 class="title">전체 옵션</h2>
+                <div>
+                    <span>외관<span class="count">1</span></span>
+                    <span>내장<span class="count">3</span></span>
+                    <span>안전<span class="count">5</span></span>
+                    <span>편의<span class="count">6</span></span>
+                </div>
+            </div>
+            <div class="option-body">
+                <ul>
+                    <li>
+                        <h3 class="subtitle">외관</h3>
+                        <span class="option">선루프</span>
+                    </li>
+                    <li>
+                        <h3 class="subtitle">내장</h3>
+                        <span class="option">하이패스</span>
+                        <span class="option">열선시트:운전석</span>
+                        <span class="option">열선시트:조수석</span>
+                    </li>
+                    <li>
+                        <h3 class="subtitle">안전</h3>
+                        <span class="option">에어백:운전석</span>
+                        <span class="option">에어백:조수석</span>
+                        <span class="option">감지센서:후방</span>
+                        <span class="option">카메라:후방</span>
+                        <span class="option">360도 어라운드 뷰</span>
+                    </li>
+                    <li>
+                        <h3 class="subtitle">편의</h3>
+                        <span class="option">오토 에어컨</span>
+                        <span class="option">스마트키</span>
+                        <span class="option">내비게이션</span>
+                        <span class="option">카메라:후방</span>
+                        <span class="option">USB 단자</span>
+                        <span class="option">블루투스</span>
+                        <span class="option">핸들 열선</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="option-header">
+                <h2 class="title">차량 기본정보</h2>
+            </div>
+            <div class="optionBorder">
+                <div class="option-body2">
+                    <div>
+                        <div class="item">
+                            <h3 class="subtitle">차량번호</h3>
+                            <span th:text="${carDetail.carNumber}"></span>
+                        </div>
+                        <div class="item">
+                            <h3 class="subtitle">차종</h3>
+                            <span th:text="${carDetail.vehicleType}"></span>
+                        </div>
+                        <div class="item">
+                            <h3 class="subtitle">인승</h3>
+                            <span th:text="${carDetail.seater}"></span>
+                        </div>
+                        <div class="item">
+                            <h3 class="subtitle">연료</h3>
+                            <span th:text="${carDetail.fuel}"></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="item">
+                            <h3 class="subtitle">주행거리</h3>
+                            <span th:text="${carDetail.mileage}"></span>
+                        </div>
+                        <div class="item">
+                            <h3 class="subtitle">변속기</h3>
+                            <span th:text="${carDetail.transmission}"></span>
+                        </div>
+                        <div class="item">
+                            <h3 class="subtitle">연식</h3>
+                            <span th:text="${carDetail.modelYear}"></span>
+                        </div>
+                        <div class="item">
+                            <h3 class="subtitle">색상</h3>
+                            <span th:text="${carDetail.color}"></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="item">
+                            <h3 class="subtitle">등급</h3>
+                            <span>가솔린 2.5</span>
+                        </div>
+                        <div class="item">
+                            <h3 class="subtitle">구동방식</h3>
+                            <span th:text="${carDetail.driveType}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <table>
+                <thead>
+                <tr>
+                    <th class="firstCol">렌트기간</th><th>보증금</th><th>선수금</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>12개월</td><td>80만원</td><td>48만원</td>
+                </tr>
+                <tr>
+                    <td>24개월</td><td>74만원</td><td>59만원</td>
+                </tr>
+                <tr>
+                    <td>36개월</td><td>68만원</td><td>58만원</td>
+                </tr>
+
+                </tbody>
+            </table>
+
+            <form method="GET" action="/order">
+<!--                <input type="hidden" th:name="id" th:value="${car.id}"/>-->
+                <a href="/order" class="reserveBtn">상담예약</a>
+            </form>
+        </section>
+    </div>
+</section>
+
+
+<!-- footer part start-->
+<footer class="footer-area">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-sm-6 col-md-5">
+                <div class="single-footer-widget">
+                    <ul>
+                        <li><a href="#">회사소개</a></li>
+                        <li><a href="#">IR</a></li>
+                        <li><a href="#">보증서비스</a></li>
+                        <li><a href="#">고객지원</a></li>
+                        <li><a href="#">ESG</a></li>
+                        <li><a href="#">인재채용</a></li>
+                        <li><a href="#">개인정보처리방침</a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">Foreigner Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="single-footer-widget">
+                    <div class="form-wrap" id="mc_embed_signup">
+                        <ul>
+                            <li><p>월~토요일 09:00~18:00</p></li>
+                            <li><p>법정공휴일/일요일</p></li>
+                            <li><p>내차사기 홈서비스 (연결 1번) / 일반문의 (연결 4번)</p></li>
+                            <li><p>월~토요일 09:00~18:00</p></li>
+                        </ul>
+                        <!-- <form target="_blank"
+                            action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                            method="get" class="form-inline">
+                            <input class="form-control" name="EMAIL" placeholder="Your Email Address"
+                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '"
+                                required="" type="email">
+                            <button class="click-btn btn btn-default text-uppercase"> <i class="far fa-paper-plane"></i>
+                            </button>
+                            <div style="position: absolute; left: -5000px;">
+                                <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value=""
+                                    type="text">
+                            </div>
+
+                            <div class="info"></div>
+                        </form> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="single-footer-widget footer_icon">
+                    <p>사업장 소재지 : 서울특별시 영등포구 선유로 43길 27, 3층(양평동3가, 청우오토프라자)</p>
+                    <span>partnership@kcar.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="copyright_part_text text-center">
+                    <p class="footer-text m-0">
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- footer part end-->
+
+<!-- jquery plugins here-->
+<script src="js/jquery-1.12.1.min.js"></script>
+<!-- popper js -->
+<script src="js/popper.min.js"></script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- magnific js -->
+<script src="js/jquery.magnific-popup.js"></script>
+<!-- swiper js -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- masonry js -->
+<script src="js/masonry.pkgd.js"></script>
+<!-- masonry js -->
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/gijgo.min.js"></script>
+<!-- contact js -->
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/contact.js"></script>
+<!-- custom js -->
+<script src="js/custom.js"></script>
+</body>
+</html>

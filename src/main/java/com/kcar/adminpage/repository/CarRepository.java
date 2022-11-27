@@ -1,6 +1,7 @@
 package com.kcar.adminpage.repository;
 
 import com.kcar.adminpage.domain.Car;
+import com.kcar.adminpage.domain.PurchaseCost;
 import com.kcar.adminpage.domain.QCar;
 import com.kcar.adminpage.domain.enums.SalesStatus;
 import com.kcar.adminpage.repository.condition.CarSearchCondition;
@@ -29,6 +30,14 @@ public class CarRepository {
         return em.find(Car.class, id);
     }
 
+    public Car findOneWithAllDetail(Long id){
+        return em.createQuery("select c from Car c" +
+                " left join fetch c.purchaseCost p" +
+                " where c.id =: id", Car.class)
+                .setParameter("id", id)
+                .getSingleResult();
+    }
+
     public List<Car> findAll(){
         return em.createQuery("select c from Car c", Car.class)
                 .getResultList();
@@ -44,6 +53,22 @@ public class CarRepository {
         return em.createQuery("SELECT c FROM Car c ORDER BY c.registrationDate DESC", Car.class)
                 .setFirstResult(0)
                 .setMaxResults(4)
+                .getResultList();
+    }
+
+    public List<Car> findOrderByDateWithHome(){
+        return em.createQuery("SELECT c FROM Car c ORDER BY c.registrationDate DESC", Car.class)
+                .setFirstResult(0)
+                .setMaxResults(6)
+                .getResultList();
+    }
+
+
+    public List<Car> findOrderByDateWithPurchase(){
+        return em.createQuery("select c from Car c" +
+                " left join fetch c.purchaseCost p", Car.class)
+                .setFirstResult(0)
+                .setMaxResults(6)
                 .getResultList();
     }
 

@@ -1,0 +1,248 @@
+@font-face {font-family: 'Noto Sans KR';font-style: normal;
+font-weight: 100;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff2)
+format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff)
+format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.otf) format('opentype');}
+
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 300;
+src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2)
+format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff)
+format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf) format('opentype');}
+
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 400;
+src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2)
+format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff)
+format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');}
+
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 500;
+src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2) format('woff2'),
+url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff) format('woff'),
+url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf) format('opentype');}
+
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 700;
+src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2)
+format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff)
+format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf) format('opentype');}
+
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 900;
+src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff2)
+format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff)
+format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.otf) format('opentype');}
+
+body{
+    font-family: 'Noto Sans KR';
+}
+
+* {
+  box-sizing: border-box;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  color: #333;
+}
+
+#installment {
+  margin-top: 30px;
+}
+
+#detail p,
+#options p,
+#options ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#detail .util span {
+  font-size: 14px;
+  background-color: #ececec;
+  padding: 3px 10px;
+  border-radius: 3px;
+  color: #777;
+}
+
+#detail .carName {
+  font-size: 34px;
+  font-weight: 400;
+  padding: 0;
+  margin: 25px 0 15px 0;
+}
+
+#detail .carInfo span {
+  font-size: 14px;
+  color: #777;
+}
+
+#detail .carInfo .carImgBox {
+  height: 650px;
+  overflow: hidden;
+}
+
+#detail .carInfo .carImgBox img {
+  margin-top: 10px;
+  width: 100%;
+}
+
+#detail .priceInfo {
+  margin: 30px 0;
+}
+
+#detail .priceInfo p {
+  font-size: 26px;
+  margin-top: 20px;
+}
+
+#detail .priceInfo .price {
+  color: #8f0e21;
+  font-size: 34px;
+}
+
+#detail .priceInfo .installment {
+  color: #8f0e21;
+  font-size: 26px;
+}
+
+/* 옵션 */
+#options .option-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  margin-top: 50px;
+}
+
+#options .option-header .title {
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+#options .option-header > div > span {
+  font-size: 18px;
+  margin: 0 10px;
+  color: #777;
+}
+
+#options .option-header > div span .count {
+  color: rgb(208, 26, 26);
+}
+
+#options .option-body ul li {
+  border-bottom: 1px solid #eee;
+  padding: 35px 25px 20px 25px;
+}
+
+#options .option-body ul li:first-child {
+  border-top: 1px solid #eee;
+}
+
+#options .option-body ul li .subtitle {
+  font-size: 18px
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+#options .option-body ul li .option {
+  display: inline-block;
+  color: #777;
+  width: 24%;
+  margin-bottom: 15px;
+}
+
+/* option-body2 */
+#options .option-body2 {
+  padding: 30px 0;
+}
+
+#options .option-body2 > div {
+  display: flex;
+  justify-content: flex-start;
+  width: fit-content;
+}
+
+#options .optionBorder {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+#options .option-body2 > div .item {
+  display: flex;
+  flex-direction: column;
+  width: 275px;
+  margin-bottom: 20px;
+}
+
+#options .option-body2 > div .item .subtitle {
+  font-weight: 400;
+  font-size: 18px;
+  color: #777;
+  margin-bottom: 10px;
+  margin-left: 30px;
+}
+
+#options .option-body2 > div .item > span {
+  margin-left: 30px;
+}
+
+#options table {
+  width: 100%;
+  border-spacing: 0;
+  border-left: none;
+  border-right: none;
+  margin-top: 50px;
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+#options table th,
+#options table td {
+  border: 1px solid #f2f2f2;
+  height: 50px;
+  text-align: center;
+}
+
+#options table thead th {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+#options table th:first-child,
+#options table td:first-child {
+  border-left: none;
+}
+#options table th:last-child,
+#options table td:last-child {
+  border-right: none;
+}
+
+#options table thead tr,
+#options table tbody tr td:first-child {
+  background-color: #fafafa;
+  color: #333;
+  font-size: 18px;
+}
+
+#options table .firstCol {
+  width: 150px;
+}
+
+#options table tbody tr td {
+  color: #777;
+  font-size: 18px;
+}
+
+#options .reserveBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 420px;
+  height: 58px;
+  background-color: #dc232d;
+  border-radius: 29px;
+  margin: 0 auto;
+  margin-top: 80px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+}
+

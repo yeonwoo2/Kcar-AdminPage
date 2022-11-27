@@ -1,11 +1,9 @@
 package com.kcar.adminpage.service;
 
+import com.kcar.adminpage.controller.dto.cardto.*;
 import com.kcar.adminpage.domain.*;
 import com.kcar.adminpage.domain.enums.SalesStatus;
 import com.kcar.adminpage.controller.dto.IdDto;
-import com.kcar.adminpage.controller.dto.cardto.CarDto;
-import com.kcar.adminpage.controller.dto.cardto.CarSearchConditionDto;
-import com.kcar.adminpage.controller.dto.cardto.CarStatusInfoDto;
 import com.kcar.adminpage.handler.ex.CustomValidationException;
 import com.kcar.adminpage.repository.*;
 import com.kcar.adminpage.repository.condition.CarSearchCondition;
@@ -144,4 +142,39 @@ public class CarService {
             purchaseCostRepository.deleteByIdIn(id.getId()); //연관관계 제거
         }
     }
+
+    public CarDetailDto findCarByOne(Long id){
+
+        Car findCar = carRepository.findOneWithAllDetail(id);
+        return new CarDetailDto(findCar.getName(),
+                                findCar.getVehicleType(),
+                                findCar.getCarNumber(),
+                                findCar.getSeater(),
+                                findCar.getModelYear(),
+                                findCar.getMileage(),
+                                findCar.getColor(),
+                                findCar.getFuel(),
+                                findCar.getTransmission(),
+                                findCar.getDriveType(),
+                                findCar.getImage(),
+                                findCar.getPurchaseCost().getCarPrice());
+    }
+
+//    public CarPriceDto findCarByOneWithPrice(Long id){
+//
+//        Car findCar = carRepository.findOneWithAllDetail(id);
+//        return new CarPriceDto(findCar.getName(),
+//                findCar.getVehicleType(),
+//                findCar.getCarNumber(),
+//                findCar.getSeater(),
+//                findCar.getModelYear(),
+//                findCar.getMileage(),
+//                findCar.getColor(),
+//                findCar.getFuel(),
+//                findCar.getTransmission(),
+//                findCar.getDriveType(),
+//                findCar.getImage(),
+//                findCar.getPurchaseCost().getCarPrice());
+//    }
+
 }

@@ -49,7 +49,7 @@ public class Car {
     private String driveType; // enum?
 
     @Lob
-    private String image; //img -> 수정요함
+    private String image; //img -> S3 연동후 URL저장 완료
 
     private int stockQuantity;
 
